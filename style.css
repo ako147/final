@@ -283,7 +283,6 @@ footer{
 /* 小標籤 */
 .category h4::before{
   content: "•";
-  noting: "";
   color: var(--accent-2);
   margin-right: 8px;
   font-weight: 900;
