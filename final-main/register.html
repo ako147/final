@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>註冊 - 商品總覽</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1>註冊</h1>
+                <p>建立你的帳戶，開始選購</p>
+            </div>
+
+            <form id="registerForm" novalidate>
+                <div class="form-group" id="groupUsername">
+                    <label for="username">使用者名稱</label>
+                    <input type="text" id="username" name="username" required placeholder="你的暱稱">
+                    <div class="hint">2-16 個字元</div>
+                    <div class="error-text">請輸入 2-16 個字元的使用者名稱</div>
+                </div>
+
+                <div class="form-group" id="groupEmail">
+                    <label for="email">電子郵件</label>
+                    <input type="email" id="email" name="email" required placeholder="name@example.com">
+                    <div class="error-text">請輸入正確的電子郵件格式</div>
+                </div>
+
+                <div class="password-row">
+                    <div class="form-group" id="groupPassword">
+                        <label for="password">密碼</label>
+                        <input type="password" id="password" name="password" required placeholder="至少 6 碼">
+                        <div class="hint">至少 6 個字元</div>
+                        <div class="error-text">密碼至少 6 個字元</div>
+                    </div>
+
+                    <div class="form-group" id="groupConfirm">
+                        <label for="confirmPassword">確認密碼</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="再輸入一次">
+                        <div class="error-text">兩次密碼不一致</div>
+                    </div>
+                </div>
+
+                <div class="terms">
+                    <label>
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <span>我同意 <a href="#">服務條款</a> 和 <a href="#">隱私政策</a></span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-submit" id="submitBtn">註冊</button>
+            </form>
+
+            <div class="auth-footer">
+                已經有帳戶了？ <a href="login.html">立即登入</a>
+            </div>
+
+            <div class="back-home">
+                <a href="index.html">← 返回首頁</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('registerForm');
+        const submitBtn = document.getElementById('submitBtn');
+
+        const username = document.getElementById('username');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirmPassword');
+        const terms = document.getElementById('terms');
+
+        const groupUsername = document.getElementById('groupUsername');
+        const groupEmail = document.getElementById('groupEmail');
+        const groupPassword = document.getElementById('groupPassword');
+        const groupConfirm = document.getElementById('groupConfirm');
+
+        function setError(group, isError) {
+            group.classList.toggle('error', !!isError);
+        }
+
+        function validateUsername() {
+            const v = username.value.trim();
+            const ok = v.length >= 2 && v.length <= 16;
+            setError(groupUsername, !ok);
+            return ok;
+        }
+
+        function validateEmail() {
+            const v = email.value.trim();
+            const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+            setError(groupEmail, !ok);
+            return ok;
+        }
+
+        function validatePassword() {
+            const v = password.value;
+            const ok = v.length >= 6;
+            setError(groupPassword, !ok);
+            return ok;
+        }
+
+        function validateConfirm() {
+            const ok = confirmPassword.value === password.value && confirmPassword.value.length > 0;
+            setError(groupConfirm, !ok);
+            return ok;
+        }
+
+        function validateAll() {
+            const ok =
+                validateUsername() &&
+                validateEmail() &&
+                validatePassword() &&
+                validateConfirm() &&
+                terms.checked;
+            return ok;
+        }
+
+        username.addEventListener('input', validateUsername);
+        email.addEventListener('input', validateEmail);
+        password.addEventListener('input', () => { validatePassword(); validateConfirm(); });
+        confirmPassword.addEventListener('input', validateConfirm);
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (!validateAll()) {
+                alert('請確認欄位填寫正確並勾選同意條款');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = '註冊中...';
+
+            // 取得已註冊的使用者資料
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+
+            // 檢查 email 是否已存在
+            const exists = users.some(u => u.email === email.value.trim());
+            if (exists) {
+                alert('此電子郵件已註冊，請直接登入');
+                submitBtn.disabled = false;
+                submitBtn.textContent = '註冊';
+                return;
+            }
+
+            // 新增使用者
+            const newUser = {
+                username: username.value.trim(),
+                email: email.value.trim(),
+                password: password.value,
+                createdAt: new Date().toISOString()
+            };
+
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
+
+            alert('註冊成功！請登入');
+            window.location.href = 'login.html';
+
+            // UX：如果未跳轉（特殊情況），恢復按鈕
+            setTimeout(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = '註冊';
+            }, 1000);
+        });
+
+        // 即時驗證確認密碼
+        confirmPassword.addEventListener('input', function() {
+            if (this.value && password.value !== this.value) {
+                this.closest('.form-group').classList.add('error');
+            } else {
+                this.closest('.form-group').classList.remove('error');
+            }
+        });
+    </script>
+</body>
+</html>
