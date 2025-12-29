@@ -1,0 +1,893 @@
+/* =========================================================
+   VisionHub - Global Styles (index + login + register)
+   ========================================================= */
+
+/* ===== Base ===== */
+:root{
+  --bg: #fbfaf7;
+  --surface: #ffffff;
+  --text: #222222;
+  --muted: #6b6b6b;
+  --line: rgba(0,0,0,.08);
+
+  --accent: #2f6f6a;
+  --accent-2: #b7794a;
+  --shadow: 0 10px 28px rgba(0,0,0,.07);
+
+  
+  --radius: 16px;
+  --radius-sm: 12px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+
+  --container: 1120px;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+}
+
+body{
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* ===== Layout helper (index 用) ===== */
+.site-header,
+.promo-marquee,
+.hero,
+.categories,
+footer{
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* =========================================================
+   INDEX.html - Navbar
+   ========================================================= */
+
+/* ===== Navbar (with actions) ===== */
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(251,250,247,.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-inner{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.logo{
+  font-size: 22px;
+  letter-spacing: .3px;
+  font-weight: 700;
+}
+
+.logo::after{
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-left: 10px;
+  border-radius: 99px;
+  background: var(--accent-2);
+  opacity: .9;
+}
+
+.nav-links{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.nav-links a{
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  transition: background .2s ease, color .2s ease;
+}
+
+.nav-links a:hover{
+  background: rgba(47,111,106,.10);
+  color: var(--accent);
+}
+
+.nav-actions{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-link{
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  transition: background .2s ease;
+}
+
+.btn-link:hover{
+  background: rgba(0,0,0,.06);
+}
+
+.btn-primary{
+  display: inline-block;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  color: #fff;
+  background: var(--accent);
+  border: 1px solid rgba(47,111,106,.25);
+  box-shadow: 0 8px 18px rgba(47,111,106,.18);
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+.btn-primary:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 12px 22px rgba(47,111,106,.22);
+  background: #285f5b;
+}
+
+/* =========================================================
+   INDEX.html - User menu dropdown（原本在 index.html <style>）
+   ========================================================= */
+
+.user-menu{
+  position: relative;
+}
+
+.user-info{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(47,111,106,.10);
+  cursor: pointer;
+  transition: background .2s ease;
+}
+
+.user-info:hover{
+  background: rgba(47,111,106,.18);
+}
+
+.user-avatar{
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.user-name{
+  font-size: 14px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.dropdown{
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+  min-width: 180px;
+  z-index: 100;
+}
+
+.dropdown.show{
+  display: block;
+}
+
+.dropdown a,
+.dropdown button{
+  display: block;
+  width: 100%;
+  padding: 10px 16px;
+  text-align: left;
+  font-size: 14px;
+  color: var(--text);
+  text-decoration: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+
+.dropdown a:hover,
+.dropdown button:hover{
+  background: var(--bg);
+}
+
+.dropdown button{
+  color: #e74c3c;
+  border-top: 1px solid var(--line);
+}
+
+.dropdown hr{
+  margin: 0;
+  border: none;
+  border-top: 1px solid var(--line);
+}
+
+/* =========================================================
+   INDEX.html - Promo marquee
+   ========================================================= */
+
+/* ===== Scrolling Ad / Marquee ===== */
+.promo-marquee{
+  border-bottom: 1px solid var(--line);
+  background: rgba(255,255,255,.55);
+}
+
+.marquee{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 10px 0;
+  overflow: hidden;
+}
+
+.marquee-track{
+  display: flex;
+  gap: 10px;
+  width: max-content;
+  animation: marquee 18s linear infinite;
+}
+
+.promo-marquee:hover .marquee-track{
+  animation-play-state: paused;
+}
+
+.chip{
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  color: var(--text);
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: 0 8px 18px rgba(0,0,0,.05);
+  white-space: nowrap;
+}
+
+@keyframes marquee{
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* =========================================================
+   INDEX.html - Hero
+   ========================================================= */
+
+/* ===== Hero ===== */
+.hero{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-top: 64px;
+  padding-bottom: 56px;
+
+  text-align: left;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.hero h2{
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: -.2px;
+  margin-bottom: 14px;
+}
+
+.hero p{
+  font-size: 16px;
+  color: var(--muted);
+  margin-bottom: 22px;
+  max-width: 52ch;
+}
+
+.hero button{
+  padding: 12px 18px;
+  font-size: 14px;
+  border: 1px solid rgba(47,111,106,.25);
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 999px;
+  box-shadow: 0 8px 18px rgba(47,111,106,.18);
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+.hero button:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 12px 22px rgba(47,111,106,.22);
+  background: #285f5b;
+}
+
+/* 右側視覺塊 */
+.hero::after{
+  content: "";
+  height: 320px;
+  border-radius: calc(var(--radius) + 6px);
+  background:
+    radial-gradient(80% 80% at 30% 25%, rgba(183,121,74,.25), transparent 60%),
+    radial-gradient(90% 90% at 70% 55%, rgba(47,111,106,.18), transparent 62%),
+    linear-gradient(135deg, rgba(255,255,255,.9), rgba(255,255,255,.55));
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+/* =========================================================
+   INDEX.html - Categories
+   ========================================================= */
+
+/* ===== Categories ===== */
+.categories{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-top: 18px;
+  padding-bottom: 54px;
+}
+
+.categories h3{
+  font-size: 22px;
+  margin-bottom: 18px;
+  letter-spacing: .2px;
+}
+
+.category-list{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.category{
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.05);
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+
+.category:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(0,0,0,.08);
+  border-color: rgba(47,111,106,.18);
+}
+
+.category h4{
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.category p{
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* 小標籤 */
+.category h4::before{
+  content: "•";
+  color: var(--accent-2);
+  margin-right: 8px;
+  font-weight: 900;
+}
+
+/* =========================================================
+   INDEX.html - Footer
+   ========================================================= */
+
+/* ===== Footer ===== */
+footer{
+  border-top: 1px solid var(--line);
+  background: rgba(255,255,255,.55);
+  padding-top: 26px;
+  padding-bottom: 26px;
+}
+
+.footer-content{
+  max-width: var(--container);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: var(--muted);
+}
+
+footer a{
+  color: var(--muted);
+  text-decoration: none;
+  margin-left: 14px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  transition: background .2s ease, color .2s ease;
+}
+
+footer a:hover{
+  background: rgba(183,121,74,.12);
+  color: var(--text);
+}
+
+/* =========================================================
+   LOGIN.html / REGISTER.html - Auth pages（原本在各自 <style>）
+   ========================================================= */
+
+.auth-container{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.auth-card{
+  width: 100%;
+  max-width: 420px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.06);
+}
+
+.auth-header{
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.auth-header h1{
+  margin: 0 0 6px;
+  font-size: 22px;
+  color: var(--text);
+}
+
+.auth-header p{
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.form-group{
+  margin-bottom: 14px;
+}
+
+.form-group label{
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.form-group input{
+  width: 100%;
+  padding: 11px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--bg);
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.form-group input:focus{
+  border-color: rgba(47,111,106,.55);
+  box-shadow: 0 0 0 3px rgba(47,111,106,.18);
+}
+
+/* login.html 專用 */
+.row-between{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0 18px;
+  gap: 12px;
+}
+
+.checkbox{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  user-select: none;
+}
+
+.checkbox input{
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+}
+
+.forgot-password{
+  font-size: 13px;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.forgot-password:hover{
+  text-decoration: underline;
+}
+
+/* login/register 共用按鈕 */
+.btn-submit{
+  width: 100%;
+  padding: 12px 14px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: .5px;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+.btn-submit:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 12px 22px rgba(47,111,106,.22);
+  background: #285f5b;
+}
+
+/* register.html 專用 */
+.btn-submit:disabled{
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.auth-footer{
+  text-align: center;
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.auth-footer a{
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.auth-footer a:hover{
+  text-decoration: underline;
+}
+
+.back-home{
+  margin-top: 16px;
+  text-align: center;
+}
+
+.back-home a{
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.back-home a:hover{
+  text-decoration: underline;
+}
+
+/* register.html：提示、密碼雙欄、條款 */
+.hint{
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+.password-row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.terms{
+  margin: 12px 0 18px;
+}
+
+.terms label{
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 13px;
+  color: var(--muted);
+  user-select: none;
+}
+
+.terms input{
+  margin-top: 2px;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+}
+
+.terms a{
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.terms a:hover{
+  text-decoration: underline;
+}
+
+/* register.html：validation */
+.form-group.error input{
+  border-color: rgba(208, 45, 45, .7);
+  box-shadow: 0 0 0 3px rgba(208, 45, 45, .12);
+}
+
+.error-text{
+  display: none;
+  font-size: 12px;
+  color: rgba(208, 45, 45, .95);
+  margin-top: 6px;
+}
+
+.form-group.error .error-text{
+  display: block;
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+
+@media (max-width: 900px){
+  .hero{
+    grid-template-columns: 1fr;
+  }
+  .hero::after{
+    height: 220px;
+  }
+  .category-list{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 720px){
+  .nav-inner{
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .nav-actions{
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 520px){
+  .category-list{
+    grid-template-columns: 1fr;
+  }
+  .hero h2{
+    font-size: 32px;
+  }
+
+  /* register 密碼欄位：小螢幕改單欄 */
+  .password-row{
+    grid-template-columns: 1fr;
+  }
+}
+/* =========================================================
+   PRODUCT PAGE
+   ========================================================= */
+
+.product-page{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 48px 24px 72px;
+}
+
+.product-wrapper{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+/* ===== 圖片區 ===== */
+.product-gallery{
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 16px;
+}
+
+.thumb-list{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.thumb-list img{
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  cursor: pointer;
+}
+
+.main-image{
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+
+.main-image img{
+  width: 100%;
+  object-fit: contain;
+}
+
+/* ===== 商品資訊 ===== */
+.product-title{
+  font-size: 26px;
+  line-height: 1.4;
+  margin-bottom: 14px;
+}
+
+.product-title span{
+  font-size: 16px;
+  color: var(--muted);
+}
+
+.price-row{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.price{
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.price-old{
+  font-size: 14px;
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.rating{
+  font-size: 14px;
+  color: #f5a623;
+  margin-bottom: 24px;
+}
+
+/* ===== 規格 ===== */
+.option-group{
+  margin-bottom: 24px;
+}
+
+.option-title{
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.option-list{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.option-list button{
+  padding: 8px 14px;
+  font-size: 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all .15s ease;
+}
+
+.option-list button:hover{
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ===== 數量 ===== */
+.quantity-row{
+  margin-bottom: 28px;
+}
+
+.qty-control{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qty-control button{
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.qty-control input{
+  width: 60px;
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 6px;
+}
+
+/* ===== 操作按鈕 ===== */
+.action-buttons{
+  display: flex;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.btn-cart{
+  flex: 1;
+  padding: 12px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-buy{
+  flex: 1;
+  padding: 12px;
+  border-radius: 999px;
+  background: var(--accent);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(47,111,106,.25);
+}
+
+.stock{
+  font-size: 13px;
+  color: #e74c3c;
+}
+
+/* ===== RWD ===== */
+@media (max-width: 900px){
+  .product-wrapper{
+    grid-template-columns: 1fr;
+  }
+  .product-gallery{
+    grid-template-columns: 1fr;
+  }
+  .thumb-list{
+    flex-direction: row;
+  }
+}
