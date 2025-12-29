@@ -10,112 +10,127 @@
 
 <!-- ===== 共用 Navbar ===== -->
 <header class="site-header">
-  <div class="nav-inner">
-    <h1 class="logo">VisionHub</h1>
-    <nav class="nav-links">
-      <a href="index.html">首頁</a>
-      <a href="allgoods.html">商品總覽</a>
-      <a href="#">品牌介紹</a>
-      <a href="#">聯絡我們</a>
-    </nav>
-    <div class="nav-actions">
-      <a class="btn-link" href="login.html">登入</a>
-      <a class="btn-primary" href="register.html">註冊</a>
+    <div class="nav-inner">
+        <h1 class="logo">VisionHub</h1>
+        <nav class="nav-links">
+            <a href="index.html">首頁</a>
+            <a href="allgoods.html">商品總覽</a>
+            <a href="#">品牌介紹</a>
+            <a href="#">聯絡我們</a>
+        </nav>
+        <div class="nav-actions">
+            <a class="btn-link" href="login.html">登入</a>
+            <a class="btn-primary" href="register.html">註冊</a>
+        </div>
     </div>
-  </div>
 </header>
 
 <!-- ===== 跑馬燈（共用） ===== -->
 <section class="promo-marquee">
-  <div class="marquee">
-    <div class="marquee-track">
-      <span class="chip">全館滿 NT$999 免運</span>
-      <span class="chip">抗藍光系列限時 8 折</span>
-      <span class="chip">指定商品第二件 5 折</span>
+    <div class="marquee">
+        <div class="marquee-track">
+            <span class="chip">全館滿 NT$999 免運</span>
+            <span class="chip">抗藍光系列限時 8 折</span>
+            <span class="chip">指定商品第二件 5 折</span>
+        </div>
     </div>
-  </div>
 </section>
 
 <!-- ===== 商品內容 ===== -->
 <main class="product-page">
 
-  <div class="product-wrapper">
+    <div class="product-wrapper">
 
     <!-- 左側：圖片 -->
-    <section class="product-gallery">
-      <div class="thumb-list">
-        <img src="image/good1/good1-1.png" alt="">
-        <img src="image/good1/good1-2.png" alt="">
-        <img src="image/good1/good1-3.png" alt="">
-      </div>
-      <div class="main-image">
-        <img src="image/good1/good1-1.png" alt="商品主圖">
-      </div>
-    </section>
+        <section class="product-gallery">
+        <div class="thumb-list">
+            <img src="image/good1/good1-1.jpg" alt="">
+            <img src="image/good1/good1-2.jpg" alt="">
+            <img src="image/good1/good1-3.jpg" alt="">
+            <img src="image/good1/good1-4.jpg" alt="">
+            <img src="image/good1/good1-5.jpg" alt="">
+            <img src="image/good1/good1-6.jpg" alt="">
+        </div>
+        <div class="main-image">
+            <img src="image/good1/good1-1.jpg" alt="商品主圖">
+        </div>
+        </section>
 
     <!-- 右側：商品資訊 -->
-    <section class="product-info">
+        <section class="product-info">
+            <h2 class="product-title">
+                2026 潮流百搭厚邊框鈦輕盈系列
+            </h2>
+            <div class="price-row">
+                <div class="price">NT$3,980</div>
+            </div>
 
-      <h2 class="product-title">
-        T-Garden Chu’s me 日拋<br>
-        <span>粉紅香檳 PEACH BROWN（10入）</span>
-      </h2>
+            <div class="rating">
+                ★★★★★ <span>5.0（1 則評價）</span>
+                </div>
+                    <div class="color-picker">
+                        <span class="color active" style="--c:#f2d6a2"></span>
+                        <span class="color" style="--c:#666"></span>
+                        <span class="color" style="--c:#000"></span>
+                    </div>
+                    
+                    <!-- 規格 -->
+                    <div class="select-row">
+                        <div>
+                            <label>規格</label>
+                            <select>
+                                <option>金色-195-gold</option>
+                                <option>黑色-195-black</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- 數量 -->
+                    <div class="quantity-row">
+                        <p class="option-title">數量</p>
+                        <div class="qty-control">
+                        <button>-</button>
+                        <input type="number" value="1" min="1">
+                        <button>+</button>
+                        </div>
+                    </div>
 
-      <div class="price-row">
-        <span class="price">NT$308</span>
-        <span class="price-old">NT$410</span>
-      </div>
+                    <!-- 操作按鈕 -->
+                    <div class="action-buttons">
+                        <button class="btn-cart">加入購物車</button>
+                        <button class="btn-buy">立即購買</button>
+                    </div>
 
-      <div class="rating">
-        ★★★★★ <span>5.0（1 則評價）</span>
-      </div>
+                <p class="stock">現庫存剩下 1 件</p>
 
-      <!-- 規格 -->
-      <div class="option-group">
-        <p class="option-title">請選擇度數</p>
-        <div class="option-list">
-          <button>0度</button>
-          <button>100度</button>
-          <button>200度</button>
-          <button>300度</button>
-          <button>400度</button>
-          <button>500度</button>
-        </div>
-      </div>
-
-      <!-- 數量 -->
-      <div class="quantity-row">
-        <p class="option-title">數量</p>
-        <div class="qty-control">
-          <button>-</button>
-          <input type="number" value="1" min="1">
-          <button>+</button>
-        </div>
-      </div>
-
-      <!-- 操作按鈕 -->
-      <div class="action-buttons">
-        <button class="btn-cart">加入購物車</button>
-        <button class="btn-buy">立即購買</button>
-      </div>
-
-      <p class="stock">現庫存剩下 1 件</p>
-
-    </section>
+        </section>
   </div>
 
 </main>
 
 <!-- ===== Footer（共用） ===== -->
 <footer>
-  <div class="footer-content">
-    <p>© 2025 VisionHub 眼鏡選品商城</p>
-    <div>
-      <a href="#">隱私權政策</a>
-      <a href="#">服務條款</a>
+    <div class="footer-content">
+        <p>© 2025 VisionHub 眼鏡選品商城</p>
+        <div>
+            <a href="#">隱私權政策</a>
+            <a href="#">服務條款</a>
+        </div>
     </div>
-  </div>
 </footer>
+
+<script>
+  const cartBtn = document.querySelector('.btn-cart');
+
+  cartBtn.addEventListener('click', () => {
+    cartBtn.classList.add('added');
+    cartBtn.textContent = '已加入 ✔';
+
+    setTimeout(() => {
+      cartBtn.classList.remove('added');
+      cartBtn.textContent = '加入購物車';
+    }, 1500);
+  });
+</script>
 
 </body>
 </html>
