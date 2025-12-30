@@ -184,7 +184,7 @@
             checkLoginStatus();
         });
 
-        // 當 localStorage 改變時也檢查（用於同一瀏覽器的多個分頁同步）
+        // 當 localStorage 改變時也檢查
         window.addEventListener('storage', function(e) {
             if (e.key === 'currentUser') {
                 console.log('偵測到登入狀態改變');
