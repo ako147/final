@@ -52,15 +52,22 @@
 
         <!-- 左側：圖片 -->
             <section class="product-gallery">
-                <div class="thumb-list">
-                    <img src="image/good1/good1-1.jpg" alt="">
-                    <img src="image/good1/good1-2.jpg" alt="">
-                    <img src="image/good1/good1-3.jpg" alt="">
-                    <img src="image/good1/good1-4.jpg" alt="">
-                    <img src="image/good1/good1-5.jpg" alt="">
-                    <img src="image/good1/good1-6.jpg" alt="">
+                <div class="thumb-list" id="thumbList">
+                    <img src="image/good1/good1-1.jpg" data-spec="gold" alt="">
+                    <img src="image/good1/good1-2.jpg" data-spec="gold" alt="">
+                    <img src="image/good1/good1-3.jpg" data-spec="gold" alt="">
+                    <img src="image/good1/good1-4.jpg" data-spec="gold" alt="">
+                    <img src="image/good1/good1-5.jpg" data-spec="gold" alt="">
+                    <img src="image/good1/good1-6.jpg" data-spec="gold" alt="">
+                    
+                    <img src="image/good1/good1-black-1.jpg" data-spec="black" alt="" style="display:none">
+                    <img src="image/good1/good1-black-2.jpg" data-spec="black" alt="" style="display:none">
+                    <img src="image/good1/good1-black-3.jpg" data-spec="black" alt="" style="display:none">
+                    <img src="image/good1/good1-black-4.jpg" data-spec="black" alt="" style="display:none">
+                    <img src="image/good1/good1-black-5.jpg" data-spec="black" alt="" style="display:none">
+                    <img src="image/good1/good1-black-6.jpg" data-spec="black" alt="" style="display:none">
                 </div>
-                <div class="main-image">
+                <div class="main-image" id="mainImage">
                     <img src="image/good1/good1-1.jpg" alt="商品主圖">
                 </div>
             </section>
@@ -84,8 +91,8 @@
                                 <label for="spec">規格</label>
                                 <div class="select-wrapper">
                                     <select id="spec">
-                                        <option>金色 ‧ 195 ‧ Gold</option>
-                                        <option>黑色 ‧ 195 ‧ Black</option>
+                                        <option value="gold">金色 ‧ 195 ‧ Gold</option>
+                                        <option value="black">黑色 ‧ 195 ‧ Black</option>
                                     </select>
                                 </div>
                             </div>
@@ -159,6 +166,29 @@
                 mainImage.src = thumb.src;
             });
         });
+    });
+    // 規格選擇
+    const specSelect = document.getElementById("spec");
+    const thumbnails = document.querySelectorAll("#thumbList img");
+    const mainImage = document.querySelector("#mainImage img");
+
+    specSelect.addEventListener("change", () => {
+        const selectedSpec = specSelect.value;
+
+        // 顯示對應規格縮圖，隱藏其他
+        thumbnails.forEach(img => {
+            if (img.dataset.spec === selectedSpec) {
+                img.style.display = "block";
+            } else {
+                img.style.display = "none";
+            }
+        });
+
+        // 主圖切換成第一張該規格縮圖
+        const firstImg = document.querySelector(`#thumbList img[data-spec="${selectedSpec}"]`);
+        if (firstImg) {
+            mainImage.src = firstImg.src;
+        }
     });
 
     // 加入購物車按鈕動畫
