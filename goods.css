@@ -358,12 +358,8 @@ footer a:hover{
 
 .main-image {
     position: relative;
-    width: 400px;
-    height: 400px;
     overflow: hidden; /* 保護容器內圖片不溢出 */
-    border: 1px solid var(--line);
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow);
 
     display: flex;
     justify-content: center;
@@ -386,10 +382,10 @@ footer a:hover{
 .image-zoom-preview {
     display: none; /* 預設隱藏 */
     position: absolute; /* 懸浮，不占空間 */
-    left: 900px; /* 放在主圖右邊，可調整間距 */
+    left: 950px; /* 放在主圖右邊，可調整間距 */
     top: 200;
-    width: 400px;  /* 放大鏡大小 */
-    height: 400px;
+    width: 500px;  /* 放大鏡大小 */
+    height: 500px;
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #fff;
