@@ -57,18 +57,22 @@
                     <img src="image/good1/good1-2.jpg" data-spec="gold" alt="">
                     <img src="image/good1/good1-3.jpg" data-spec="gold" alt="">
                     <img src="image/good1/good1-4.jpg" data-spec="gold" alt="">
-                    <img src="image/good1/good1-5.jpg" data-spec="gold" alt="">
-                    <img src="image/good1/good1-6.jpg" data-spec="gold" alt="">
+                    <img src="image/good1/good.jpg" data-spec="gold" alt="">
+                    <img src="image/good1/good2.jpg" data-spec="gold" alt="">
                     
-                    <img src="image/good1/good1-black-1.jpg" data-spec="black" alt="" style="display:none">
-                    <img src="image/good1/good1-black-2.jpg" data-spec="black" alt="" style="display:none">
-                    <img src="image/good1/good1-black-3.jpg" data-spec="black" alt="" style="display:none">
-                    <img src="image/good1/good1-black-4.jpg" data-spec="black" alt="" style="display:none">
-                    <img src="image/good1/good1-black-5.jpg" data-spec="black" alt="" style="display:none">
-                    <img src="image/good1/good1-black-6.jpg" data-spec="black" alt="" style="display:none">
+                    <img src="image/good1/good2-1.jpg" data-spec="black" alt="" style="display:none">
+                    <img src="image/good1/good1-2.jpg" data-spec="black" alt="" style="display:none">
+                    <img src="image/good1/good1-3.jpg" data-spec="black" alt="" style="display:none">
+                    <img src="image/good1/good1-4.jpg" data-spec="black" alt="" style="display:none">
+                    <img src="image/good1/good.jpg" data-spec="black" alt="" style="display:none">
+                    <img src="image/good1/good2.jpg" data-spec="black" alt="" style="display:none">
                 </div>
                 <div class="main-image" id="mainImage">
                     <img src="image/good1/good1-1.jpg" alt="商品主圖">
+                </div>
+                <!-- 放大鏡預覽 -->
+                <div class="image-zoom-preview" id="zoomPreview">
+                    <img src="image/good1/good1-1.jpg" id="zoomImg">
                 </div>
             </section>
 
@@ -117,8 +121,69 @@
 
             </section>
     </div>
-    <!-- =====  留言板 ===== -->
+    <!-- ===== 商品資訊三欄 ===== -->
+    <section class="product-tabs">
+        <div class="tab-buttons">
+            <button class="tab-btn active" data-tab="info">商品資訊</button>
+            <button class="tab-btn" data-tab="product-spec">商品規格</button>
+            <button class="tab-btn" data-tab="return">退貨保證</button>
+        </div>
 
+        <div class="tab-content active" id="info">
+            <p>
+                本商品採用高品質鈦金屬鏡框，輕量耐用，適合長時間配戴，
+                搭配潮流設計，日常與正式場合皆適用。
+            </p>
+        </div>
+
+        <div class="tab-content" id="product-spec">
+            <div class="spec-table">
+                <div class="spec-row">
+                    <span class="spec-label">商品名稱</span>
+                    <span class="spec-value">2026 潮流百搭厚邊框鈦輕盈系列</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">型號</span>
+                    <span class="spec-value">UTF-25A-261</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">尺寸</span>
+                    <span class="spec-value">57□17-150 ○47</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">販售店鋪</span>
+                    <span class="spec-value">全台部分門市與官方網站販售</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">框型</span>
+                    <span class="spec-value">其他</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">適合臉型</span>
+                    <span class="spec-value">鵝蛋形</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">適用性別</span>
+                    <span class="spec-value">UNISEX</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">可更換鏡片型號</span>
+                    <span class="spec-value">fra001003010</span>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="tab-content" id="return">
+            <p>
+                商品享有 7 天鑑賞期，若商品有瑕疵可免費退換貨，
+                請保持商品完整並聯絡客服處理。
+            </p>
+        </div>
+    </section>
+
+    <!-- =====  留言板 ===== -->
     <section class="message-board">
         <h2 class="board-title">留言板</h2>
         <!-- 星級 -->
@@ -155,176 +220,8 @@
     </div>
 </footer>
 
-<script>
-    // 商品圖片切換
-    document.addEventListener("DOMContentLoaded", () => {
-        const thumbnails = document.querySelectorAll(".thumb-list img");
-        const mainImage = document.querySelector(".main-image img");
+<script src="goods.js" defer></script>
 
-        thumbnails.forEach(thumb => {
-            thumb.addEventListener("click", () => {
-                mainImage.src = thumb.src;
-            });
-        });
-    });
-    // 規格選擇
-    const specSelect = document.getElementById("spec");
-    const thumbnails = document.querySelectorAll("#thumbList img");
-    const mainImage = document.querySelector("#mainImage img");
-
-    specSelect.addEventListener("change", () => {
-        const selectedSpec = specSelect.value;
-
-        // 顯示對應規格縮圖，隱藏其他
-        thumbnails.forEach(img => {
-            if (img.dataset.spec === selectedSpec) {
-                img.style.display = "block";
-            } else {
-                img.style.display = "none";
-            }
-        });
-
-        // 主圖切換成第一張該規格縮圖
-        const firstImg = document.querySelector(`#thumbList img[data-spec="${selectedSpec}"]`);
-        if (firstImg) {
-            mainImage.src = firstImg.src;
-        }
-    });
-
-    // 加入購物車按鈕動畫
-    const cartBtn = document.querySelector('.btn-cart');
-
-    cartBtn.addEventListener('click', () => {
-        cartBtn.classList.add('added');
-        cartBtn.textContent = '已加入 ✔';
-
-        setTimeout(() => {
-        cartBtn.classList.remove('added');
-        cartBtn.textContent = '加入購物車';
-        }, 1500);
-    });
-
-    // 數量控制器
-    const minusBtn = document.getElementById("minus");
-    const plusBtn = document.getElementById("plus");
-    const qtyInput = document.getElementById("qty");
-
-    plusBtn.addEventListener("click", () => {
-        qtyInput.value = parseInt(qtyInput.value) + 1;
-    });
-
-    minusBtn.addEventListener("click", () => {
-        let current = parseInt(qtyInput.value);
-        if (current > 1) {
-            qtyInput.value = current - 1;
-        }
-    });
-
-    // 留言板
-    let selectedRating = 0;
-        const stars = document.querySelectorAll(".star");
-        const ratingText = document.getElementById("ratingText");
-        const messageList = document.getElementById("messageList");
-
-        // 星級點擊
-        stars.forEach(star => {
-            star.addEventListener("click", () => {
-                selectedRating = star.dataset.value;
-
-                stars.forEach(s => {
-                    s.classList.toggle("active", s.dataset.value <= selectedRating);
-                });
-
-                ratingText.textContent = `評分：${selectedRating} 顆星`;
-            });
-        });
-
-    // 送出留言
-    document.getElementById("submitMessage").addEventListener("click", () => {
-        const username = document.getElementById("username").value.trim();
-        const message = document.getElementById("message").value.trim();
-
-        if (!username || !message || selectedRating === 0) {
-            alert("請填寫姓名、留言內容並選擇星級");
-            return;
-        }
-
-        const newMessage = {
-            username,
-            message,
-            rating: selectedRating,
-            time: new Date().toLocaleString()
-        };
-
-        const messages = JSON.parse(localStorage.getItem("messages")) || [];
-        messages.unshift(newMessage);
-        localStorage.setItem("messages", JSON.stringify(messages));
-
-        renderMessages();
-
-        // 清空
-        document.getElementById("username").value = "";
-        document.getElementById("message").value = "";
-        selectedRating = 0;
-        stars.forEach(s => s.classList.remove("active"));
-        ratingText.textContent = "請選擇評分";
-    });
-
-    // 顯示留言
-    function renderMessages() {
-        const messages = JSON.parse(localStorage.getItem("messages")) || [];
-        messageList.innerHTML = "";
-
-        messages.forEach(msg => {
-            const div = document.createElement("div");
-            div.className = "message-item";
-            div.innerHTML = `
-                <div class="message-header">
-                    ${msg.username}
-                    <span class="message-time">${msg.time}</span>
-                </div>
-                <div class="message-content">
-                    ${"★".repeat(msg.rating)}${"☆".repeat(5 - msg.rating)}<br>
-                    ${msg.message}
-                </div>
-            `;
-            messageList.appendChild(div);
-        });
-    }
-
-    // 頁面一載入就顯示
-    document.addEventListener("DOMContentLoaded", renderMessages);
-
-    //更新評論
-    function updateRatingSummary() {
-        const messages = JSON.parse(localStorage.getItem("messages")) || [];
-
-        const ratingStars = document.getElementById("ratingStars");
-        const ratingInfo = document.getElementById("ratingInfo");
-
-        if (messages.length === 0) {
-            ratingStars.textContent = "☆☆☆☆☆";
-            ratingInfo.textContent = "0.0（0 則評價）";
-            return;
-        }
-
-        const total = messages.reduce((sum, msg) => sum + Number(msg.rating), 0);
-        const avg = (total / messages.length).toFixed(1);
-
-        // 星星顯示（四捨五入）
-        const fullStars = Math.round(avg);
-        ratingStars.textContent =
-            "★".repeat(fullStars) + "☆".repeat(5 - fullStars);
-
-        ratingInfo.textContent = `${avg}（${messages.length} 則評價）`;
-    }
-    updateRatingSummary();
-    document.addEventListener("DOMContentLoaded", () => {
-        renderMessages();
-        updateRatingSummary();
-    });
-
-</script>
 
 </body>
 </html>
