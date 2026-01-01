@@ -22,9 +22,9 @@ function initFavoriteButtons() {
 
 // ===== 商品資料 =====
 const products = [
-    { id:101, name:"2026 潮流百搭厚邊框鈦輕盈系列", price:3980, colors:["beige","black"], category:"MEN", material:"鈦合金", shape:"方框", type:"光學眼鏡", url:"goods/good1.html", image:"image/goods/1/1-1.jpg" },
-    { id:102, name:"極簡金屬輕量框", price:3280, colors:["black"], category:"WOMEN", material:"金屬", shape:"圓框", type:"光學眼鏡", url:"goods/good2.html", image:"image/goods/2/2-1.jpg" },
-    { id:103, name:"抗藍光學生款", price:2680, colors:["beige"], category:"KID&JUNIOR", material:"醋酸纖維/塑膠", shape:"貓眼框", type:"藍光眼鏡", url:"goods/good3.html", image:"image/goods/3/3-1.jpg" },
+    { id:101, name:"2026 潮流百搭厚邊框鈦輕盈系列", price:3980, colors:["gold","black"], category:"UNISEX", material:"鈦合金", shape:"其他", type:"光學眼鏡", url:"goods/good1.html", image:"image/goods/1/1-1.jpg" },
+    { id:102, name:"2026 潮流百搭厚邊框鈦輕盈系列", price:3980, colors:["gold","gray"], category:"UNISEX", material:"鈦合金", shape:"威靈頓框", type:"光學眼鏡", url:"goods/good2.html", image:"image/goods/2/1-1.jpg" },
+    { id:103, name:"2026 潮流百搭厚邊框鈦輕盈系列", price:3980, colors:["black"], category:"UNISEX", material:"鈦合金", shape:"方框", type:"光學眼鏡", url:"goods/good3.html", image:"image/goods/3/1-1.jpg" },
     { id:104, name:"時尚太陽鏡 A款", price:3980, colors:["black"], category:"UNISEX", material:"金屬", shape:"飛行員款", type:"太陽眼鏡", url:"goods/good4.html", image:"image/goods/4/4-1.jpg" },
     { id:105, name:"眼鏡盒配件套組", price:580, colors:["black","beige"], category:"UNISEX", material:"塑膠", shape:"其他", type:"配件", url:"goods/good5.html", image:"image/goods/5/5-1.jpg" }
 ];
@@ -41,6 +41,7 @@ const applyFilterBtn = document.getElementById("applyFilter");
 const selectedTagsBox = document.getElementById("selectedTags");
 const sortBtn = document.getElementById("sortBtn");
 const sortList = document.getElementById("sortList");
+const sortWrapper = document.querySelector(".sort-wrapper");
 
 // ===== 初始 =====
 let selectedFilters = { type: [], category: [], color: [], material: [], shape: [], price: [] };
@@ -57,15 +58,18 @@ function renderProducts(list){
             const isFav = favorites.includes(String(p.id));
             grid.innerHTML += `
                 <a href="${p.url}" class="product-link">
-                    <article class="product-card">
-                        <button class="favorite ${isFav?"active":""}" data-id="${p.id}">${isFav?"♥":"♡"}</button>
-                        <img src="${p.image || 'image/default.jpg'}">
-                        <p class="title">${p.name}</p>
-                        <p class="price">NT$${p.price}</p>
-                        <div class="colors">${p.colors.map(c=>`<span class="color ${c}"></span>`).join("")}</div>
-                    </article>
+                  <article class="product-card">
+                    <button class="favorite ${isFav ? "active" : ""}" data-id="${p.id}">♥</button>
+
+                    <div class="product-image">
+                      <img src="${p.image}" alt="${p.name}">
+                    </div>
+
+                    <p class="title">${p.name}</p>
+                    <p class="price">NT$${p.price}</p>
+                  </article>
                 </a>
-            `;
+                `;
         });
     }
     initFavoriteButtons();

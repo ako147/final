@@ -499,7 +499,7 @@ footer a:hover{
     border-color: var(--accent);
 }
 .sort-list {
-    display: none;
+    display: none; 
     position: absolute;
     top: 100%;
     right: 0;
@@ -529,28 +529,52 @@ footer a:hover{
    PRODUCTS.html - 商品列表頁面
    ========================================================= */
 
-/* 結果列 */
-.result-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
-}
 
 /* 商品 Grid */
 .product-grid {
     max-width: var(--container);
-    margin: 0 auto 64px;
+    margin: 0 auto 80px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    gap: 56px 40px;
 }
+
 
 /* 商品卡 */
 .product-card {
-    position: relative; /* 父層定位 */
+    position: relative;
+    background: #fff;
+    border-radius: 20px;
+    padding: 20px 18px 32px;
     text-align: center;
+
+    transition: transform .25s ease, box-shadow .25s ease;
 }
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0,0,0,.08);
+}
+.product-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    margin-bottom: 20px;
+}
+.title {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    color: #222;
+}
+
+.product-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
 .product-link {
     text-decoration: none;
     color: inherit;
@@ -560,17 +584,18 @@ footer a:hover{
 /* 愛心 */
 .favorite {
     position: absolute;
-    top: 12px;
-    left: 12px;
+    top: 18px;
+    right: 18px;
+    left: auto;
 
     background: rgba(255,255,255,0.9);
     border: none;
     border-radius: 50%;
 
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
 
-    font-size: 50px;
+    font-size: 30px;
     cursor: pointer;
     color: #aaa;
 
@@ -595,15 +620,16 @@ footer a:hover{
 /* 價格 */
 .price {
     color: #e60012;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 18px;
+    margin-bottom: 14px;
 }
 
 /* 顏色 */
 .colors {
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
 }
 
 .color {
