@@ -1,6 +1,5 @@
   // 讀取收藏清單
   event.preventDefault();
-
   let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
   document.querySelectorAll(".favorite").forEach(btn => {
