@@ -63,29 +63,204 @@
             </div>
         </div>
     </section>
-    <section class="search-bar">
-        <input type="text" placeholder="請輸入商品名稱、型號等關鍵字">
-        <button class="filter-btn">進階篩選</button>
-        <button class="clear-btn">清除篩選條件</button>
-        <button class="search-btn">搜尋</button>
+    <!-- ===== 搜尋 & 進階搜尋 ===== -->
+    <section class="search-bar-wrapper">
+        <div class="search-bar">
+            <input id="searchInput" type="text" placeholder="請輸入商品名稱">
+            <button id="searchBtn">搜尋</button>
+            <button class="filter-btn" id="filterBtn">進階搜索</button>
+            <button id="clearBtn">清除條件</button>
+        </div>
+
+        <!-- 進階篩選框（初始隱藏） -->
+        <div id="advanceFilter" class="advance-filter">
+
+        <!-- 大分類 -->
+            <div class="main-category">
+                <button class="main-btn" data-target="optical">光學眼鏡</button>
+                <button class="main-btn" data-target="sun">太陽眼鏡</button>
+                <button class="main-btn" data-target="functional">抗藍光眼鏡</button>
+                <button class="main-btn" data-target="accessory">配件</button>
+            </div>
+
+            <!-- 光學眼鏡選項 -->
+            <div id="optical" class="filter-group">
+                <div class="filter-columns">
+                    <button class="filter-btn" data-target="categoryPanel">類別</button>
+                    <button class="filter-btn" data-target="colorPanel">鏡框顏色</button>
+                    <button class="filter-btn" data-target="materialPanel">鏡框材質</button>
+                    <button class="filter-btn" data-target="shapePanel">框形</button>
+                    <button class="filter-btn" data-target="pricePanel">價格</button>
+                </div>
+                <!-- 類別 -->
+                <div id="categoryPanel" class="option-panel">
+                    <button class="option-btn" data-type="category" data-value="UNISEX">UNISEX</button>
+                    <button class="option-btn" data-type="category" data-value="MEN">MEN</button>
+                    <button class="option-btn" data-type="category" data-value="WOMEN">WOMEN</button>
+                    <button class="option-btn" data-type="category" data-value="KID&JUNIOR">KID & JUNIOR</button>
+                </div>
+                <!-- 鏡框顏色 -->
+                <div id="colorPanel" class="option-panel">
+                    <button class="option-btn" data-type="color" data-value="black">黑色系</button>
+                    <button class="option-btn" data-type="color" data-value="beige">米色系</button>
+                    <button class="option-btn" data-type="color" data-value="brown">棕色系</button>
+                    <button class="option-btn" data-type="color" data-value="gold">金色系</button>
+                    <button class="option-btn" data-type="color" data-value="silver">銀色系</button>
+                </div>
+                <!-- 鏡框材質 -->
+                <div id="materialPanel" class="option-panel">
+                    <button class="option-btn" data-type="material" data-value="plastic">塑膠</button>
+                    <button class="option-btn" data-type="material" data-value="metal">金屬</button>
+                    <button class="option-btn" data-type="material" data-value="titanium">鈦金屬</button>
+                    <button class="option-btn" data-type="material" data-value="mixed">混合材質</button>
+                </div>
+                <!-- 框形 -->
+                <div id="shapePanel" class="option-panel">
+                    <button class="option-btn" data-type="shape" data-value="round">圓形</button>
+                    <button class="option-btn" data-type="shape" data-value="square">方形</button>
+                    <button class="option-btn" data-type="shape" data-value="cat-eye">貓眼形</button>
+                    <button class="option-btn" data-type="shape" data-value="aviator">飛行員款</button>
+                    <button class="option-btn" data-type="shape" data-value="other">其他</button>
+                </div>
+                <!-- 價格 -->
+                <div id="pricePanel" class="option-panel">
+                    <button class="option-btn" data-type="price" data-value="0-1000">NT$0 - NT$1,000</button>
+                    <button class="option-btn" data-type="price" data-value="1001-3000">NT$1,001 - NT$3,000</button>
+                    <button class="option-btn" data-type="price" data-value="3001-5000">NT$3,001 - NT$5,000</button>
+                    <button class="option-btn" data-type="price" data-value="5001+">NT$5,001 以上</button>
+                </div>
+            </div>
+            <!-- 太陽眼鏡篩選 -->
+            <div id="sun" class="filter-group">
+                <div class="filter-columns">
+                    <button class="filter-btn" data-target="sunCategoryPanel">類別</button>
+                    <button class="filter-btn" data-target="sunColorPanel">鏡框顏色</button>
+                    <button class="filter-btn" data-target="sunMaterialPanel">鏡框材質</button>
+                    <button class="filter-btn" data-target="sunShapePanel">框形</button>
+                    <button class="filter-btn" data-target="sunPricePanel">價格</button>
+                </div>
+                <!-- 類別 -->
+                <div id="sunCategoryPanel" class="option-panel">
+                    <button class="option-btn" data-type="category" data-value="UNISEX">UNISEX</button>
+                    <button class="option-btn" data-type="category" data-value="MEN">MEN</button>
+                    <button class="option-btn" data-type="category" data-value="WOMEN">WOMEN</button>
+                    <button class="option-btn" data-type="category" data-value="KID&JUNIOR">KID & JUNIOR</button>
+                </div>
+                <!-- 鏡框顏色 -->
+                <div id="sunColorPanel" class="option-panel">
+                    <button class="option-btn" data-type="color" data-value="black">黑色系</button>
+                    <button class="option-btn" data-type="color" data-value="beige">米色系</button>
+                    <button class="option-btn" data-type="color" data-value="brown">棕色系</button>
+                    <button class="option-btn" data-type="color" data-value="gold">金色系</button>
+                    <button class="option-btn" data-type="color" data-value="silver">銀色系</button>
+                </div>
+                <!-- 鏡框材質 -->
+                <div id="sunMaterialPanel" class="option-panel">
+                    <button class="option-btn" data-type="material" data-value="plastic">塑膠</button>
+                    <button class="option-btn" data-type="material" data-value="metal">金屬</button>
+                    <button class="option-btn" data-type="material" data-value="titanium">鈦金屬</button>
+                    <button class="option-btn" data-type="material" data-value="mixed">混合材質</button>
+                </div>
+                <!-- 框形 -->
+                <div id="sunShapePanel" class="option-panel">
+                    <button class="option-btn" data-type="shape" data-value="round">圓形</button>
+                    <button class="option-btn" data-type="shape" data-value="square">方形</button>
+                    <button class="option-btn" data-type="shape" data-value="cat-eye">貓眼形</button>
+                    <button class="option-btn" data-type="shape" data-value="aviator">飛行員款</button>
+                    <button class="option-btn" data-type="shape" data-value="other">其他</button>
+                </div>
+                <!-- 價格 -->
+                <div id="sunPricePanel" class="option-panel">
+                    <button class="option-btn" data-type="price" data-value="0-1000">NT$0 - NT$1,000</button>
+                    <button class="option-btn" data-type="price" data-value="1001-3000">NT$1,001 - NT$3,000</button>
+                    <button class="option-btn" data-type="price" data-value="3001-5000">NT$3,001 - NT$5,000</button>
+                    <button class="option-btn" data-type="price" data-value="5001+">NT$5,001 以上</button>
+                </div>
+            </div>
+            <!-- 抗藍光眼鏡篩選 -->
+            <div id="functional" class="filter-group">
+                <div class="filter-columns">
+                    <button class="filter-btn" data-target="functionalCategoryPanel">類別</button>
+                    <button class="filter-btn" data-target="functionalColorPanel">鏡框顏色</button>
+                    <button class="filter-btn" data-target="functionalMaterialPanel">鏡框材質</button>
+                    <button class="filter-btn" data-target="functionalShapePanel">框形</button>
+                    <button class="filter-btn" data-target="functionalPricePanel">價格</button>
+                </div>
+                <!-- 類別 -->
+                <div id="functionalCategoryPanel" class="option-panel">
+                    <button class="option-btn" data-type="category" data-value="UNISEX">UNISEX</button>
+                    <button class="option-btn" data-type="category" data-value="MEN">MEN</button>
+                    <button class="option-btn" data-type="category" data-value="WOMEN">WOMEN</button>       
+                    <button class="option-btn" data-type="category" data-value="KID&JUNIOR">KID & JUNIOR</button>
+                </div>
+                <!-- 鏡框顏色 -->
+                <div id="functionalColorPanel" class="option-panel">      
+                    <button class="option-btn" data-type="color" data-value="black">黑色系</button>
+                    <button class="option-btn" data-type="color" data-value="beige">米色系</button>
+                    <button class="option-btn" data-type="color" data-value="brown">棕色系</button>
+                    <button class="option-btn" data-type="color" data-value="gold">金色系</button>
+                    <button class="option-btn" data-type="color" data-value="silver">銀色系</button>
+                </div>
+                <!-- 鏡框材質 -->
+                <div id="functionalMaterialPanel" class="option-panel">
+                    <button class="option-btn" data-type="material" data-value="plastic">塑膠</button>
+                    <button class="option-btn" data-type="material" data-value="metal">金屬</button>
+                    <button class="option-btn" data-type="material" data-value="titanium">鈦金屬</button>
+                    <button class="option-btn" data-type="material" data-value="mixed">混合材質</button>
+                </div>
+                <!-- 框形 -->
+                <div id="functionalShapePanel" class="option-panel">
+                    <button class="option-btn" data-type="shape" data-value="round">圓形</button>
+                    <button class="option-btn" data-type="shape" data-value="square">方形</button>
+                    <button class="option-btn" data-type="shape" data-value="cat-eye">貓眼形</button>
+                    <button class="option-btn" data-type="shape" data-value="aviator">飛行員款</button>
+                    <button class="option-btn" data-type="shape" data-value="other">其他</button>
+                </div>
+                <!-- 價格 -->
+                <div id="functionalPricePanel" class="option-panel">
+                    <button class="option-btn" data-type="price" data-value="0-1000">NT$0 - NT$1,000</button>
+                    <button class="option-btn" data-type="price" data-value="1001-3000">NT$1,001 - NT$3,000</button>
+                    <button class="option-btn" data-type="price" data-value="3001-5000">NT$3,001 - NT$5,000</button>
+                    <button class="option-btn" data-type="price" data-value="5001+">NT$5,001 以上</button>
+                </div>
+            </div>
+            <div id="selectedTags" class="selected-tags"></div>
+            <!-- 套用 -->
+            <div class="filter-actions">
+                <button id="applyFilter">依此條件篩選</button>
+            </div>
+        </div>
     </section>
+
+    
+
 
 <!-- 結果資訊 -->
-    <section class="result-bar">
-        <span>搜尋結果 <strong>522</strong> 件</span>
-        <button class="sort-btn">排序方式 ⬍</button>
-    </section>
+    <!-- 結果資訊 -->
+<section class="result-bar">
+    <span>搜尋結果 <strong id="resultCount">422</strong> 件</span>
+
+    <!-- 排序下拉 -->
+    <div class="sort-wrapper">
+        <button id="sortBtn">排序方式 ⬍</button>
+        <ul id="sortList" class="sort-list">
+            <li data-sort="newest">最新上架</li>
+            <li data-sort="price-desc">價格由高到低</li>
+            <li data-sort="price-asc">價格由低到高</li>
+        </ul>
+    </div>
+</section>
+
 
 <!-- 商品列表 -->
-    <section class="product-grid">
-
+    <section class="product-grid" id="productGrid">
         <a href="goods/good1.html" class="product-link">
             <article class="product-card">
             <button class="favorite" data-id="101"
                 onclick="event.preventDefault(); event.stopPropagation();">♡</button>
             <img src="image/goods/1/1-1.jpg">
             <p class="title">2026 潮流百搭厚邊框鈦輕盈系列</p>
-            <p class="price">NT$3,980</p>
+            <p class="price">NT$ 3,980</p>
             <div class="colors">
                 <span class="color beige"></span>
                 <span class="color black"></span>
@@ -99,7 +274,7 @@
                 onclick="event.preventDefault(); event.stopPropagation();">♡</button>
             <img src="image/goods/2/2-1.jpg">
             <p class="title">2026 潮流百搭厚邊框鈦輕盈系列</p>
-            <p class="price">3,980</p>
+            <p class="price">NT$ 3,980</p>
             <div class="colors">
                 <span class="color black"></span>
             </div>
@@ -112,7 +287,7 @@
                 onclick="event.preventDefault(); event.stopPropagation();">♡</button>
             <img src="image/goods/3/3-1.jpg">
             <p class="title">抗藍光學生款</p>
-            <p class="price">NT$2,680</p>
+            <p class="price">NT$ 2,680</p>
             <div class="colors">
                 <span class="color beige"></span>
             </div>

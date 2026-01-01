@@ -325,28 +325,209 @@ footer a:hover{
     gap: 48px;
     align-items: flex-start;
 }
+/* 搜尋 + 進階篩選外框 */
+.search-bar-wrapper {
+  max-width: 800px;
+  margin: 0 auto 40px; /* 置中 */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 
 /* 搜尋列 */
 .search-bar {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 .search-bar input {
-    flex: 1;
-    padding: 10px 14px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+  width: 300px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
 }
 
 .search-bar button {
-    padding: 10px 16px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.search-bar button:hover {
+  background: #f2f2f2;
+}
+/* 進階篩選面板 */
+/* ===== 第一層 ===== */
+.main-category {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.main-btn {
+  padding: 10px 22px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+}
+
+.main-btn.active {
+  background: #2f3b52;
+  color: #fff;
+}
+
+/* ===== 第二層 ===== */
+.filter-group {
+  display: none;
+}
+
+.filter-group.active {
+  display: block;
+}
+
+/* 欄位 */
+.filter-columns {
+  display: flex;
+  gap: 24px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+
+.filter-btn {
+  background: none;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  padding-bottom: 6px;
+}
+
+.filter-btn.active {
+  font-weight: bold;
+  border-bottom: 2px solid #2f3b52;
+}
+
+/* ===== 第三層 ===== */
+.option-panel {
+  display: none;
+  margin-top: 16px;
+}
+
+.option-panel.active {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.option-btn {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+}
+
+.option-btn.active {
+  background: #2f3b52;
+  color: #fff;
+  border-color: #2f3b52;
+}
+
+/* ===== 套用按鈕 ===== */
+.filter-actions {
+  text-align: center;
+  margin-top: 32px;
+}
+
+.filter-actions button {
+  background: #2f3b52;
+  color: #fff;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.filter-actions button:hover {
+  background: #1f2a40;
+}
+
+.selected-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.tag {
+  background: #2f3b52;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 16px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tag button {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+/* 排序下拉選單 */
+.result-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.sort-wrapper button:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+}
+.sort-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
     background: #fff;
+    border: 1px solid #ccc;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 150px;
+    z-index: 10;
+}
+
+.sort-list li {
+    padding: 8px 12px;
     cursor: pointer;
 }
+
+.sort-list li:hover {
+    background-color: #f0f0f0;
+}
+
+.sort-wrapper.show .sort-list {
+    display: block;
+}
+
+/* =========================================================
+   PRODUCTS.html - 商品列表頁面
+   ========================================================= */
 
 /* 結果列 */
 .result-bar {
