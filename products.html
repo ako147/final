@@ -86,50 +86,53 @@
             <!-- 光學眼鏡選項 -->
             <div id="optical" class="filter-group">
                 <div class="filter-columns">
-                    <button class="filter-btn" data-target="categoryPanel">類別</button>
-                    <button class="filter-btn" data-target="colorPanel">鏡框顏色</button>
-                    <button class="filter-btn" data-target="materialPanel">鏡框材質</button>
-                    <button class="filter-btn" data-target="shapePanel">框形</button>
-                    <button class="filter-btn" data-target="pricePanel">價格</button>
+                    <button class="filter-btn" data-target="optioncategoryPanel">類別</button>
+                    <button class="filter-btn" data-target="optioncolorPanel">鏡框顏色</button>
+                    <button class="filter-btn" data-target="opticalmaterialPanel">鏡框材質</button>
+                    <button class="filter-btn" data-target="opticalShapePanel">框形</button>
+                    <button class="filter-btn" data-target="opticalpricePanel">價格</button>
                 </div>
                 <!-- 類別 -->
-                <div id="categoryPanel" class="option-panel">
+                <div id="optioncategoryPanel" class="option-panel">
                     <button class="option-btn" data-type="category" data-value="UNISEX">UNISEX</button>
                     <button class="option-btn" data-type="category" data-value="MEN">MEN</button>
                     <button class="option-btn" data-type="category" data-value="WOMEN">WOMEN</button>
                     <button class="option-btn" data-type="category" data-value="KID&JUNIOR">KID & JUNIOR</button>
                 </div>
                 <!-- 鏡框顏色 -->
-                <div id="colorPanel" class="option-panel">
+                <div id="optioncolorPanel" class="option-panel">      
                     <button class="option-btn" data-type="color" data-value="black">黑色</button>
                     <button class="option-btn" data-type="color" data-value="white">白色</button>
                     <button class="option-btn" data-type="color" data-value="brown">棕色</button>
                     <button class="option-btn" data-type="color" data-value="gold">金色</button>
                     <button class="option-btn" data-type="color" data-value="gray">灰色</button>
+                    <button class="option-btn" data-type="color" data-value="pink">粉色</button>
                     <button class="option-btn" data-type="color" data-value="silver">銀色</button>
-                    <button class="option-btn" data-type="color" data-value="transparent">透明</button>
+                    <button class="option-btn" data-type="color" data-value="clear">透明</button>
                 </div>
                 <!-- 鏡框材質 -->
-                <div id="materialPanel" class="option-panel">
+                <div id="opticalmaterialPanel" class="option-panel">
                     <button class="option-btn" data-type="material" data-value="plastic">塑膠</button>
                     <button class="option-btn" data-type="material" data-value="metal">金屬</button>
-                    <button class="option-btn" data-type="material" data-value="titanium">鈦金屬</button>
+                    <button class="option-btn" data-type="material" data-value="titanium">鈦合金</button>
                     <button class="option-btn" data-type="material" data-value="mixed">混合材質</button>
                     <button class="option-btn" data-type="material" data-value="resin">輕量樹酯</button>
                     <button class="option-btn" data-type="material" data-value="other">其他</button>
                     <button class="option-btn" data-type="material" data-value="Celluloid">賽璐璐</button>
                 </div>
                 <!-- 框形 -->
-                <div id="shapePanel" class="option-panel">
+                <div id="opticalShapePanel" class="option-panel">
                     <button class="option-btn" data-type="shape" data-value="round">圓框</button>
                     <button class="option-btn" data-type="shape" data-value="square">方框</button>
                     <button class="option-btn" data-type="shape" data-value="cat-eye">貓眼框</button>
                     <button class="option-btn" data-type="shape" data-value="oval">橢圓框</button>
+                    <button class="option-btn" data-type="shape" data-value="postom">波士頓框</button>
                     <button class="option-btn" data-type="shape" data-value="aviator">飛行員框</button>
+                    <button class="option-btn" data-type="shape" data-value="wellington">威靈頓框</button>
                     <button class="option-btn" data-type="shape" data-value="other">其他</button>
                 </div>
                 <!-- 價格 -->
-                <div id="pricePanel" class="option-panel">
+                <div id="opticalpricePanel" class="option-panel">
                     <button class="option-btn" data-type="price" data-value="0-1000">NT$0 - NT$1,000</button>
                     <button class="option-btn" data-type="price" data-value="1001-3000">NT$1,001 - NT$3,000</button>
                     <button class="option-btn" data-type="price" data-value="3001-5000">NT$3,001 - NT$5,000</button>
@@ -153,14 +156,15 @@
                     <button class="option-btn" data-type="category" data-value="KID&JUNIOR">KID & JUNIOR</button>
                 </div>
                 <!-- 鏡框顏色 -->
-                <div id="sunColorPanel" class="option-panel">
+                <div id="sunColorPanel" class="option-panel">      
                     <button class="option-btn" data-type="color" data-value="black">黑色</button>
                     <button class="option-btn" data-type="color" data-value="white">白色</button>
                     <button class="option-btn" data-type="color" data-value="brown">棕色</button>
                     <button class="option-btn" data-type="color" data-value="gold">金色</button>
                     <button class="option-btn" data-type="color" data-value="gray">灰色</button>
+                    <button class="option-btn" data-type="color" data-value="pink">粉色</button>
                     <button class="option-btn" data-type="color" data-value="silver">銀色</button>
-                    <button class="option-btn" data-type="color" data-value="transparent">透明</button>
+                    <button class="option-btn" data-type="color" data-value="clear">透明</button>
                 </div>
                 <!-- 鏡框材質 -->
                 <div id="sunMaterialPanel" class="option-panel">
@@ -178,7 +182,9 @@
                     <button class="option-btn" data-type="shape" data-value="square">方框</button>
                     <button class="option-btn" data-type="shape" data-value="cat-eye">貓眼框</button>
                     <button class="option-btn" data-type="shape" data-value="oval">橢圓框</button>
+                    <button class="option-btn" data-type="shape" data-value="postom">波士頓框</button>
                     <button class="option-btn" data-type="shape" data-value="aviator">飛行員框</button>
+                    <button class="option-btn" data-type="shape" data-value="wellington">威靈頓框</button>
                     <button class="option-btn" data-type="shape" data-value="other">其他</button>
                 </div>
                 <!-- 價格 -->
@@ -214,7 +220,7 @@
                     <button class="option-btn" data-type="color" data-value="gray">灰色</button>
                     <button class="option-btn" data-type="color" data-value="pink">粉色</button>
                     <button class="option-btn" data-type="color" data-value="silver">銀色</button>
-                    <button class="option-btn" data-type="color" data-value="transparent">透明</button>
+                    <button class="option-btn" data-type="color" data-value="clear">透明</button>
                 </div>
                 <!-- 鏡框材質 -->
                 <div id="functionalMaterialPanel" class="option-panel">
@@ -232,6 +238,7 @@
                     <button class="option-btn" data-type="shape" data-value="square">方框</button>
                     <button class="option-btn" data-type="shape" data-value="cat-eye">貓眼框</button>
                     <button class="option-btn" data-type="shape" data-value="oval">橢圓框</button>
+                    <button class="option-btn" data-type="shape" data-value="postom">波士頓框</button>
                     <button class="option-btn" data-type="shape" data-value="aviator">飛行員框</button>
                     <button class="option-btn" data-type="shape" data-value="wellington">威靈頓框</button>
                     <button class="option-btn" data-type="shape" data-value="other">其他</button>
@@ -295,7 +302,7 @@
             <button class="favorite" data-id="102"
                 onclick="event.preventDefault(); event.stopPropagation();">♡</button>
             <div class="product-image">
-                <img src="image/goods/2/2-1.jpg">
+                <img src="image/goods/2/1-1.jpg">
             </div>
             <p class="title">2026 潮流百搭厚邊框鈦輕盈系列</p>
             <p class="price">NT$ 3,980</p>
@@ -310,16 +317,195 @@
             <button class="favorite" data-id="103"
                 onclick="event.preventDefault(); event.stopPropagation();">♡</button>
             <div class="product-image">
-                <img src="image/goods/3/3-1.jpg">
+                <img src="image/goods/3/1-1.jpg">
             </div>
-            <p class="title">抗藍光學生款</p>
-            <p class="price">NT$ 2,680</p>
+            <p class="title">2026 潮流百搭厚邊框鈦輕盈系列</p>
+            <p class="price">NT$ 3,980</p>
             <div class="colors">
-                <span class="color beige"></span>
+                <span class="color black"></span>
             </div>
             </article>
         </a>
 
+        <a href="goods/good4.html" class="product-link">
+            <article class="product-card">
+                <button class="favorite" data-id="104"
+                    onclick="event.preventDefault(); event.stopPropagation();">♡</button>
+                <div class="product-image">
+                    <img src="image/goods/4/1-1.jpg" alt="">
+                </div>
+                <p class="title">經典時尚系列 墨鏡</p>
+                <p class="price">NT$ 3,980</p>
+                <div class="colors">
+                    <span class="color black"></span>
+                </div>
+            </article>
+        </a>
+        <a href="goods/good5.html" class="product-link">
+            <article class="product-card">
+                <button class="favorite" data-id="105"
+                    onclick="event.preventDefault(); event.stopPropagation();">♡</button>
+                <div class="product-image">
+                    <img src="image/goods/5/1-1.jpg" alt="">
+                </div>
+                <p class="title">金屬濾藍光眼鏡</p>
+                <p class="price">NT$ 1,584</p>
+                <div class="colors">
+                    <span class="color pink"></span>
+                    <span class="color gold"></span>
+                </div>
+            </article>
+        </a>
+        <a href="goods/good6.html" class="product-link">
+            <article class="product-card">
+                <button class="favorite" data-id="106"
+                    onclick="event.preventDefault(); event.stopPropagation();">♡</button>
+                <div class="product-image">
+                    <img src="image/goods/6/1-1.jpg" alt="">
+                </div>
+                <p class="title">無度數濾藍光盒裝眼鏡</p>
+                <p class="price">NT$ 1,584</p>
+                <div class="colors">
+                    <span class="color brown"></span>
+                </div>
+            </article>
+        </a>
+        <a href="goods/good7.html" class="product-link">
+            <article class="product-card">
+                <button class="favorite" data-id="107"
+                    onclick="event.preventDefault(); event.stopPropagation();">♡</button>
+                <div class="product-image">
+                    <img src="image/goods/7/1-1.jpg" alt="">
+                </div>
+                <p class="title">Chill墨鏡系列</p>
+                <p class="price">NT$ 1,736</p>
+                <div class="colors">
+                    <span class="color gray"></span>
+                    <span class="color black"></span>
+                </div>
+            </article>
+
+        </a>
+        <a href="goods/good8.html" class="product-link">
+            <article class="product-card">
+                <button class="favorite" data-id="108"
+                    onclick="event.preventDefault(); event.stopPropagation();">♡</button>
+                <div class="product-image">
+                    <img src="image/goods/8/1-1.jpg" alt="">
+                </div>
+                <p class="title">經典時尚系列</p>
+                <p class="price">NT$ 4,980</p>
+                <div class="colors">
+                    <span class="color brown"></span>
+                </div>
+            </article>
+        </a>
+        <a href="goods/good9.html" class="product-link">
+            <article class="product-card">
+                <button class="favorite" data-id="109"
+                    onclick="event.preventDefault(); event.stopPropagation();">♡</button>
+                <div class="product-image">
+                    <img src="image/goods/9/1-1.jpg" alt="">
+                </div>
+                <p class="title">360°®超彈力耐壓系列 兒童款</p>
+                <p class="price">NT$ 2,980</p>
+                <div class="colors">
+                    <span class="color brown"></span>
+                    <span class="color pink"></span>
+                    <span class="color blue"></span>
+                </div>
+            </article>
+        </a>
+        <a href="goods/good10.html" class="product-link">
+            <article class="product-card">
+                <button class="favorite" data-id="110"
+                    onclick="event.preventDefault(); event.stopPropagation();">♡</button>
+                <div class="product-image">
+                    <img src="image/goods/10/1-1.jpg" alt="">
+                </div>
+                <p class="title">2024 日本製春夏系列眼鏡</p>
+                <p class="price">NT$ 3,980</p>
+                <div class="colors">
+                    <span class="color pink"></span>
+                    <span class="color green"></span>
+                    <span class="color clear"></span>
+                </div>
+            </article>
+        </a>
+        <a href="goods/good11.html" class="product-link">
+            <article class="product-card">
+                <button class="favorite" data-id="111"
+                    onclick="event.preventDefault(); event.stopPropagation();">♡</button>
+                <div class="product-image">
+                    <img src="image/goods/11/1-1.jpg" alt="">
+                </div>
+                <p class="title">復古厚感膠框系列</p>
+                <p class="price">NT$ 1,899</p>
+                <div class="colors">
+                    <span class="color gray"></span>
+                    <span class="color pink"></span>
+                    <span class="color brown"></span>
+                </div>
+            </article>
+        </a>
+        <a href="goods/good12.html" class="product-link">
+            <article class="product-card">
+                <button class="favorite" data-id="112"
+                    onclick="event.preventDefault(); event.stopPropagation();">♡</button>
+                <div class="product-image">
+                    <img src="image/goods/12/1-1.jpg" alt="">
+                </div>
+                <p class="title">Switch 2024 SWITCH Renew系列</p>
+                <p class="price">NT$ 2,786</p>
+                <div class="colors">
+                    <span class="color black"></span>
+                </div>
+            </article>
+        </a>
+        <a href="goods/good13.html" class="product-link">
+            <article class="product-card">
+                <button class="favorite" data-id="113"
+                    onclick="event.preventDefault(); event.stopPropagation();">♡</button>
+                <div class="product-image">
+                    <img src="image/goods/13/1-1.jpg" alt="">
+                </div>
+                <p class="title">Chill系列</p>
+                <p class="price">NT$ 2,533</p>
+                <div class="colors">
+                    <span class="color black"></span>
+                    <span class="color gray"></span>
+                </div>
+            </article>
+        </a>
+        <a href="goods/good14.html" class="product-link">
+            <article class="product-card">
+                <button class="favorite" data-id="114"
+                    onclick="event.preventDefault(); event.stopPropagation();">♡</button>
+                <div class="product-image">
+                    <img src="image/goods/14/1-1.jpg" alt="">
+                </div>
+                <p class="title">STAR WARS設計款 角色系列-孩童款</p>
+                <p class="price">NT$ 2,786</p>
+                <div class="colors">
+                    <span class="color brown"></span>
+                </div>
+            </article>
+        </a>
+        <a href="goods/good15.html" class="product-link">
+            <article class="product-card">
+                <button class="favorite" data-id="115"
+                    onclick="event.preventDefault(); event.stopPropagation();">♡</button>
+                <div class="product-image">
+                    <img src="image/goods/15/1-1.jpg" alt="">
+                </div>
+                <p class="title">ZOOTOPIA 眼鏡盒</p>
+                <p class="price">NT$ 390</p>
+                <div class="colors">
+                    <span class="color green"></span>
+                    <span class="color gray"></span>
+                </div>
+            </article>
+        </a>
     </section>
 
     <footer>

@@ -219,6 +219,7 @@ footer{
 .dropdown a:hover,
 .dropdown button:hover{
     background: var(--bg);
+    background-color: #285f5b;
 }
 
 .dropdown button{
@@ -327,15 +328,17 @@ footer a:hover{
 }
 /* 搜尋 + 進階篩選外框 */
 .search-bar-wrapper {
-  max-width: 800px;
-  margin: 0 auto 40px; /* 置中 */
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+    max-width: 800px;
+    margin: 0 auto 40px; /* 置中 */
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 26px;
+    padding-bottom: 26px;
 }
 
 /* 搜尋列 */
-.search-bar {
+.search-bar {  
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -360,7 +363,8 @@ footer a:hover{
 }
 
 .search-bar button:hover {
-  background: #f2f2f2;
+  color: #f2f2f2;
+  background-color: #285f5b;
 }
 /* 進階篩選面板 */
 /* ===== 第一層 ===== */
@@ -379,7 +383,7 @@ footer a:hover{
 }
 
 .main-btn.active {
-  background: #2f3b52;
+  background: #285f5b;
   color: #fff;
 }
 
@@ -411,7 +415,7 @@ footer a:hover{
 
 .filter-btn.active {
   font-weight: bold;
-  border-bottom: 2px solid #2f3b52;
+  border-bottom: 2px solid #285f5b;
 }
 
 /* ===== 第三層 ===== */
@@ -435,9 +439,9 @@ footer a:hover{
 }
 
 .option-btn.active {
-  background: #2f3b52;
+  background: #285f5b;
   color: #fff;
-  border-color: #2f3b52;
+  border-color: #285f5b;
 }
 
 /* ===== 套用按鈕 ===== */
@@ -447,7 +451,7 @@ footer a:hover{
 }
 
 .filter-actions button {
-  background: #2f3b52;
+  background: #285f5b;
   color: #fff;
   border: none;
   padding: 12px 32px;
@@ -458,10 +462,13 @@ footer a:hover{
 }
 
 .filter-actions button:hover {
-  background: #1f2a40;
+  color: #f2f2f2;
+  background-color: #285f5b;
 }
 
 .selected-tags {
+    padding-top: 26px;
+    padding-bottom: 26px;
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
@@ -469,7 +476,7 @@ footer a:hover{
 }
 
 .tag {
-  background: #2f3b52;
+  background: #285f5b;
   color: #fff;
   padding: 6px 10px;
   border-radius: 16px;

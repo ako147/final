@@ -22,11 +22,21 @@ function initFavoriteButtons() {
 
 // ===== 商品資料 =====
 const products = [
-    { id:101, name:"2026 潮流百搭厚邊框鈦輕盈系列", price:3980, colors:["gold","black"], category:"UNISEX", material:"鈦合金", shape:"其他", type:"光學眼鏡", url:"goods/good1.html", image:"image/goods/1/1-1.jpg" },
-    { id:102, name:"2026 潮流百搭厚邊框鈦輕盈系列", price:3980, colors:["gold","gray"], category:"UNISEX", material:"鈦合金", shape:"威靈頓框", type:"光學眼鏡", url:"goods/good2.html", image:"image/goods/2/1-1.jpg" },
-    { id:103, name:"2026 潮流百搭厚邊框鈦輕盈系列", price:3980, colors:["black"], category:"UNISEX", material:"鈦合金", shape:"方框", type:"光學眼鏡", url:"goods/good3.html", image:"image/goods/3/1-1.jpg" },
-    { id:104, name:"時尚太陽鏡 A款", price:3980, colors:["black"], category:"UNISEX", material:"金屬", shape:"飛行員款", type:"太陽眼鏡", url:"goods/good4.html", image:"image/goods/4/4-1.jpg" },
-    { id:105, name:"眼鏡盒配件套組", price:580, colors:["black","beige"], category:"UNISEX", material:"塑膠", shape:"其他", type:"配件", url:"goods/good5.html", image:"image/goods/5/5-1.jpg" }
+    { id:101, name:"2026 潮流百搭厚邊框鈦輕盈系列", price:3980, colors:["gold","black"], category:"UNISEX", material:"titanium", shape:"other", type:"光學眼鏡", url:"goods/good1.html", image:"image/goods/1/1-1.jpg" },
+    { id:102, name:"2026 潮流百搭厚邊框鈦輕盈系列", price:3980, colors:["gold","gray"], category:"UNISEX", material:"titanium", shape:"wellington", type:"光學眼鏡", url:"goods/good2.html", image:"image/goods/2/1-1.jpg" },
+    { id:103, name:"2026 潮流百搭厚邊框鈦輕盈系列", price:3980, colors:["black"], category:"UNISEX", material:"titanium", shape:"square", type:"光學眼鏡", url:"goods/good3.html", image:"image/goods/3/1-1.jpg" },
+    { id:104, name:"經典時尚系列 墨鏡", price:3980, colors:["black"], category:"UNISEX", material:"塑膠", shape:"無", type:"太陽眼鏡", url:"goods/good4.html", image:"image/goods/4/1-1.jpg" },
+    { id:105, name:"金屬濾藍光眼鏡", price:1584, colors:["gold","pink"], category:"UNISEX", material:"metal", shape:"postom", type:"抗藍光眼鏡", url:"goods/good5.html", image:"image/goods/5/1-1.jpg" },
+    { id:106, name:"2026 潮流百搭厚邊框鈦輕盈系列", price:3980, colors:["gold","black"], category:"UNISEX", material:"titanium", shape:"other", type:"光學眼鏡", url:"goods/good6.html", image:"image/goods/6/1-1.jpg" },
+    { id:107, name:"2026 潮流百搭厚邊框鈦輕盈系列", price:3980, colors:["gold","gray"], category:"UNISEX", material:"titanium", shape:"wellington", type:"光學眼鏡", url:"goods/good7.html", image:"image/goods/7/1-1.jpg" },
+    { id:108, name:"2026 潮流百搭厚邊框鈦輕盈系列", price:3980, colors:["black"], category:"UNISEX", material:"titanium", shape:"square", type:"光學眼鏡", url:"goods/good8.html", image:"image/goods/8/1-1.jpg" },
+    { id:109, name:"經典時尚系列 墨鏡", price:3980, colors:["black"], category:"UNISEX", material:"plastic", shape:"none", type:"太陽眼鏡", url:"goods/good9.html", image:"image/goods/9/1-1.jpg" },
+    { id:110, name:"金屬濾藍光眼鏡", price:1584, colors:["gold","pink"], category:"UNISEX", material:"metal", shape:"postom", type:"抗藍光眼鏡", url:"goods/good10.html", image:"image/goods/10/1-1.jpg" },
+    { id:111, name:"2026 潮流百搭厚邊框鈦輕盈系列", price:3980, colors:["gold","black"], category:"UNISEX", material:"titanium", shape:"other", type:"光學眼鏡", url:"goods/good11.html", image:"image/goods/11/1-1.jpg" },
+    { id:112, name:"2026 潮流百搭厚邊框鈦輕盈系列", price:3980, colors:["gold","gray"], category:"UNISEX", material:"titanium", shape:"wellington", type:"光學眼鏡", url:"goods/good12.html", image:"image/goods/12/1-1.jpg" },
+    { id:113, name:"2026 潮流百搭厚邊框鈦輕盈系列", price:3980, colors:["black"], category:"UNISEX", material:"titanium", shape:"square", type:"光學眼鏡", url:"goods/good13.html", image:"image/goods/13/1-1.jpg" },
+    { id:114, name:"經典時尚系列 墨鏡", price:3980, colors:["black"], category:"UNISEX", material:"plastic", shape:"none", type:"太陽眼鏡", url:"goods/good14.html", image:"image/goods/14/1-1.jpg" },
+    { id:115, name:"金屬濾藍光眼鏡", price:1584, colors:["gold","pink"], category:"UNISEX", material:"metal", shape:"postom", type:"抗藍光眼鏡", url:"goods/good15.html", image:"image/goods/15/1-1.png" }
 ];
 
 // ===== DOM 元素 =====
