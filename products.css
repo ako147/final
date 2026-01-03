@@ -646,8 +646,15 @@ footer a:hover{
     border: 1px solid #ccc;
 }
 
-.color.beige { background: #e6caa0; }
+.color.gold { background: #f5e296; }
 .color.black { background: #000; }
+.color.blue { background: #9fd8e9; }
+.color.pink { background: #f5c7d1; }
+.color.green { background: #c0e99f; }
+.color.brown { background: #7a5050; }
+.color.gray { background: #888888; }
+.color.clear { background: #bbbbbb; }
+.color.white { background: #ffffff; }
 
 @media (max-width: 768px) {
     .product-grid {
