@@ -26,7 +26,7 @@ const products = [
     { id:102, name:"2026 潮流百搭厚邊框鈦輕盈系列", price:3980, colors:["gold","gray"], category:"UNISEX", material:"titanium", shape:"wellington", type:"光學眼鏡", url:"goods/good2.html", image:"image/goods/2/1-1.jpg" },
     { id:103, name:"2026 潮流百搭厚邊框鈦輕盈系列", price:3980, colors:["black"], category:"UNISEX", material:"titanium", shape:"square", type:"光學眼鏡", url:"goods/good3.html", image:"image/goods/3/1-1.jpg" },
     { id:104, name:"經典時尚系列 墨鏡", price:3980, colors:["black"], category:"UNISEX", material:"plastic", shape:"", type:"太陽眼鏡", url:"goods/good4.html", image:"image/goods/4/1-1.jpg" },
-    { id:105, name:"金屬濾藍光眼鏡", price:1584, colors:["gold","pink"], category:"UNISEX", material:"metal", shape:"postom", type:"抗藍光眼鏡", url:"goods/good5.html", image:"image/goods/5/1-1.jpg" },
+    { id:105, name:"金屬濾藍光眼鏡", price:1584, colors:["pink","gold"], category:"UNISEX", material:"metal", shape:"postom", type:"抗藍光眼鏡", url:"goods/good5.html", image:"image/goods/5/1-1.jpg" },
     { id:106, name:"無度數濾藍光盒裝眼鏡", price:1584, colors:["brown"], category:"UNISEX", material:"metal", shape:"postom", type:"抗藍光眼鏡", url:"goods/good6.html", image:"image/goods/6/1-1.jpg" },
     { id:107, name:"Chill墨鏡系列", price:1736, colors:["black","gray"], category:"WOMENS", material:"metal", shape:"other", type:"太陽眼鏡", url:"goods/good7.html", image:"image/goods/7/1-1.jpg" },
     { id:108, name:"經典時尚系列", price:4980, colors:["brown"], category:"WOMENS", material:"plastic", shape:"square", type:"光學眼鏡", url:"goods/good8.html", image:"image/goods/8/1-1.jpg" },
