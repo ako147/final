@@ -1,84 +1,171 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>登入 - 商品總覽</title>
-    <link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>會員中心 - 登入 / 註冊</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    <div class="auth-container">
-        <div class="auth-card">
-            <div class="auth-header">
-                <h1>登入</h1>
-                <p>歡迎回來，請輸入帳號資訊</p>
-            </div>
+  <!-- ===== Navbar ===== -->
+  <header class="site-header">
+    <div class="nav-inner">
+      <h1 class="logo">VisionHub</h1>
 
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="email">電子郵件</label>
-                    <input type="email" id="email" name="email" required placeholder="name@example.com">
-                </div>
+      <nav class="nav-links">
+        <a href="index.html">首頁</a>
+        <a href="products.html">商品總覽</a>
+        <a href="#">品牌介紹</a>
+        <a href="#">聯絡我們</a>
+      </nav>
 
-                <div class="form-group">
-                    <label for="password">密碼</label>
-                    <input type="password" id="password" name="password" required placeholder="至少 6 碼">
-                </div>
-
-                <div class="row-between">
-                    <label class="checkbox">
-                        <input type="checkbox" id="remember">
-                        <span>記住我</span>
-                    </label>
-                    <a href="#" class="forgot-password">忘記密碼？</a>
-                </div>
-
-                <button type="submit" class="btn-submit">登入</button>
-            </form>
-
-            <div class="auth-footer">
-                還沒有帳戶？ <a href="register.html">立即註冊</a>
-            </div>
-
-            <div class="back-home">
-                <a href="index.html">← 返回首頁</a>
-            </div>
+      <!-- 使用者選單（登入後顯示） -->
+      <div class="user-menu" id="userMenu" style="display: none;">
+        <div class="user-info" onclick="toggleDropdown()">
+          <div class="user-avatar" id="userAvatar">U</div>
+          <span class="user-name" id="userName">使用者</span>
         </div>
+        <div class="dropdown" id="dropdown">
+          <a href="#">我的帳戶</a>
+          <a href="#">訂單記錄</a>
+          <a href="#">收藏清單</a>
+          <hr />
+          <button onclick="logout()">登出</button>
+        </div>
+      </div>
     </div>
+  </header>
 
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('email').value.trim();
-            const password = document.getElementById('password').value;
-            
-            // 取得已註冊的使用者資料
-            const users = JSON.parse(localStorage.getItem('users') || '[]');
-            
-            // 尋找符合的使用者
-            const user = users.find(u => u.email === email && u.password === password);
-            
-            if (user) {
-                // 登入成功，儲存登入狀態
-                const currentUser = {
-                    username: user.username,
-                    email: user.email,
-                    loginAt: new Date().toISOString()
-                };
-                
-                localStorage.setItem('currentUser', JSON.stringify(currentUser));
-                console.log('已儲存使用者資訊:', currentUser);
-                
-                alert('登入成功！歡迎回來，' + user.username + '！');
-                
-                // 立即跳轉回首頁
-                window.location.href = 'index.html';
-            } else {
-                alert('電子郵件或密碼錯誤，請重試');
-            }
-        });
-    </script>
+  <!-- ===== 滾動式廣告 ===== -->
+  <section class="promo-marquee" aria-label="最新優惠">
+    <div class="marquee">
+      <div class="marquee-track">
+        <span class="chip">新品上市｜極簡金屬鏡框</span>
+        <span class="chip">全館滿 NT$999 免運</span>
+        <span class="chip">抗藍光系列限時 8 折</span>
+        <span class="chip">指定商品第二件 5 折</span>
+        <span class="chip">學生專屬優惠開放中</span>
+
+        <span class="chip">新品上市｜極簡金屬鏡框</span>
+        <span class="chip">全館滿 NT$999 免運</span>
+        <span class="chip">抗藍光系列限時 8 折</span>
+        <span class="chip">指定商品第二件 5 折</span>
+        <span class="chip">學生專屬優惠開放中</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Member page (tabs) ===== -->
+  <main class="member-page">
+    <div class="member-shell">
+      <div class="member-tabs" role="tablist" aria-label="會員登入/註冊切換">
+        <button class="member-tab is-active" id="tabLogin" type="button" role="tab" aria-selected="true">
+          會員登入
+        </button>
+        <button class="member-tab" id="tabRegister" type="button" role="tab" aria-selected="false">
+          會員註冊
+        </button>
+      </div>
+
+      <div class="member-panel">
+        <!-- ========== Login ========== -->
+        <section id="panelLogin" class="member-pane" role="tabpanel" aria-labelledby="tabLogin">
+          <form id="loginForm" class="member-form">
+            <div class="form-row">
+              <label for="loginEmail">帳號</label>
+              <input type="email" id="loginEmail" name="loginEmail" required placeholder="請輸入帳號(英文+數字)" />
+            </div>
+
+            <div class="form-row">
+              <label for="loginPassword">密碼</label>
+              <input type="password" id="loginPassword" name="loginPassword" required placeholder="請輸入密碼" />
+            </div>
+
+            <button type="submit" class="btn-submit member-btn-dark">登 入</button>
+
+            <div class="member-links">
+              <a href="#" class="member-link">忘記密碼</a>
+              <span class="member-sep">|</span>
+              <a href="#" class="member-link">忘記帳號</a>
+            </div>
+
+            <div class="member-hintline">
+              還沒加入會員嗎？
+              <a href="login.html?tab=register" class="member-cta">立即註冊</a>
+            </div>
+          </form>
+        </section>
+
+        <!-- ========== Register ========== -->
+        <section id="panelRegister" class="member-pane is-hidden" role="tabpanel" aria-labelledby="tabRegister">
+          <form id="registerForm" class="member-form" novalidate>
+            <div class="member-divider"><span>帳號密碼設定</span></div>
+
+            <div class="form-row" id="groupUsername">
+              <label for="regUsername">使用者名稱</label>
+              <div class="field-col">
+                <input type="text" id="regUsername" name="regUsername" required placeholder="請輸入帳號(英文+數字)" />
+                <div class="hint">2-16 個字元</div>
+                <div class="error-text">請輸入 2-16 個字元的使用者名稱</div>
+              </div>
+            </div>
+
+            <div class="form-row" id="groupEmail">
+              <label for="regEmail">電子信箱</label>
+              <div class="field-col">
+                <input type="email" id="regEmail" name="regEmail" required placeholder="請輸入電子信箱" />
+                <div class="error-text">請輸入正確的電子郵件格式</div>
+              </div>
+            </div>
+
+            <div class="form-row" id="groupPassword">
+              <label for="regPassword">密碼</label>
+              <div class="field-col">
+                <input type="password" id="regPassword" name="regPassword" required placeholder="請輸入密碼" />
+                <div class="hint">至少 6 個字元</div>
+                <div class="error-text">密碼至少 6 個字元</div>
+              </div>
+            </div>
+
+            <div class="form-row" id="groupConfirm">
+              <label for="regConfirmPassword">再次輸入密碼</label>
+              <div class="field-col">
+                <input type="password" id="regConfirmPassword" name="regConfirmPassword" required placeholder="請再次輸入密碼" />
+                <div class="error-text">兩次密碼不一致</div>
+              </div>
+            </div>
+
+            <div class="member-divider"><span>會員資料填寫</span></div>
+
+            <div class="form-row">
+              <label for="regRealName">真實姓名</label>
+              <input type="text" id="regRealName" name="regRealName" placeholder="請輸入您的真實姓名" />
+            </div>
+
+            <div class="form-row">
+              <label for="regPhone">手機號碼</label>
+              <input type="tel" id="regPhone" name="regPhone" placeholder="請輸入您的手機號碼" />
+            </div>
+
+            <div class="terms member-terms">
+              <label>
+                <input type="checkbox" id="terms" name="terms" required />
+                <span>我同意 <a href="#">服務條款</a> 和 <a href="#">隱私政策</a></span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn-submit member-btn-dark" id="submitBtn">註 冊</button>
+
+            <div class="member-hintline">
+              已經有帳戶了？
+              <a href="login.html?tab=login" class="member-cta">立即登入</a>
+            </div>
+          </form>
+        </section>
+      </div>
+    </div>
+  </main>
+  <script src="login.js" defer></script>
 </body>
 </html>

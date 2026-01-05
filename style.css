@@ -664,6 +664,188 @@ footer a:hover{
 }
 
 /* =========================================================
+   Member Page - Login/Register Tabs (one page)
+   ========================================================= */
+
+.member-page{
+  padding: 24px 24px 80px;
+}
+
+.member-shell{
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.member-tabs{
+  display: flex;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.member-tab{
+  flex: 1;
+  padding: 14px 12px;
+  font-size: 15px;
+  letter-spacing: .5px;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  color: var(--text);
+  transition: background .2s ease, color .2s ease;
+}
+
+.member-tab + .member-tab{
+  border-left: 1px solid var(--line);
+}
+
+.member-tab.is-active{
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+}
+
+.member-panel{
+  border: 1px solid var(--line);
+  border-top: none;
+  background: #fff;
+  padding: 46px 0 56px;
+}
+
+.member-pane.is-hidden{
+  display: none;
+}
+
+.member-form{
+  width: min(760px, 92%);
+  margin: 0 auto;
+}
+
+.form-row{
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 22px;
+  align-items: center;
+  margin: 16px 0;
+}
+
+.form-row > label{
+  text-align: right;
+  font-size: 14px;
+  color: #555;
+}
+
+.field-col{
+  display: flex;
+  flex-direction: column;
+}
+
+.member-form input{
+  width: 100%;
+  padding: 12px 12px;
+  border: 1px solid var(--line);
+  background: #fafafa;
+  border-radius: 0;
+  outline: none;
+}
+
+.member-form input:focus{
+  border-color: rgba(47,111,106,.55);
+  box-shadow: 0 0 0 3px rgba(47,111,106,.12);
+}
+
+.member-btn-dark{
+  width: 320px;
+  margin: 26px auto 0;
+  border-radius: 0;
+  background: #333;
+  box-shadow: none;
+}
+
+.member-btn-dark:hover{
+  transform: none;
+  background: #222;
+  box-shadow: none;
+}
+
+.member-links{
+  margin-top: 14px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.member-link{
+  color: #2f6f6a;
+  text-decoration: none;
+}
+
+.member-link:hover{
+  text-decoration: underline;
+}
+
+.member-sep{
+  margin: 0 10px;
+  color: #999;
+}
+
+.member-hintline{
+  margin-top: 14px;
+  text-align: center;
+  color: #666;
+  font-size: 13px;
+}
+
+.member-cta{
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.member-cta:hover{
+  text-decoration: underline;
+}
+
+.member-divider{
+  width: min(760px, 92%);
+  margin: 34px auto 14px;
+  position: relative;
+  text-align: center;
+  color: #555;
+  font-size: 14px;
+  letter-spacing: .5px;
+}
+
+.member-divider::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: rgba(0,0,0,.12);
+}
+
+.member-divider span{
+  position: relative;
+  background: #fff;
+  padding: 0 16px;
+}
+
+.member-terms{
+  width: min(100px, 100%);
+  margin: 18px auto 0;
+}
+
+.member-terms label{
+  justify-content: center;
+}
+
+.form-group.error input{
+  border-color: rgba(208, 45, 45, .7);
+  box-shadow: 0 0 0 3px rgba(208, 45, 45, .12);
+}
+
+
+/* =========================================================
    Responsive
    ========================================================= */
 
@@ -700,5 +882,18 @@ footer a:hover{
   /* register 密碼欄位：小螢幕改單欄 */
   .password-row{
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px){
+  .form-row{
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .form-row > label{
+    text-align: left;
+  }
+  .member-btn-dark{
+    width: 100%;
   }
 }
