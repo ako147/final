@@ -34,6 +34,9 @@ body{
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
+  min-height: 100vh;          
+  display: flex;              
+  flex-direction: column;  
 }
 
 /* ===== Layout helper (index 用) ===== */
@@ -301,6 +304,19 @@ footer{
   align-items: center;
 }
 
+.hero-image img{
+  width: 120%;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 22px;
+  box-shadow: 0 14px 30px rgba(0,0,0,.12);
+  transition: transform .6s ease;
+}
+
+.hero-image:hover img{
+  transform: scale(1.05);
+}
+
 .hero h2{
   font-size: 40px;
   line-height: 1.2;
@@ -333,18 +349,6 @@ footer{
   background: #285f5b;
 }
 
-/* 右側視覺塊 */
-.hero::after{
-  content: "";
-  height: 320px;
-  border-radius: calc(var(--radius) + 6px);
-  background:
-    radial-gradient(80% 80% at 30% 25%, rgba(183,121,74,.25), transparent 60%),
-    radial-gradient(90% 90% at 70% 55%, rgba(47,111,106,.18), transparent 62%),
-    linear-gradient(135deg, rgba(255,255,255,.9), rgba(255,255,255,.55));
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
-}
 
 /* =========================================================
    INDEX.html - Categories
@@ -413,7 +417,9 @@ footer{
   background: rgba(255,255,255,.55);
   padding-top: 26px;
   padding-bottom: 26px;
+  margin-top: auto; 
 }
+
 
 .footer-content{
   max-width: var(--container);
