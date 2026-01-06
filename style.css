@@ -607,6 +607,276 @@ footer{
   .hero[aria-label="主視覺大廣告輪播"] .hero-slide{ height:320px; }
   .hero[aria-label="主視覺大廣告輪播"] .hero-overlay h2{ font-size:26px; }
 }
+
+/* =========================
+   CART
+========================= */
+.cart-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width: 22px;
+  height: 18px;
+  padding: 0 6px;
+  margin-left: 6px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.cart-header{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap: 12px;
+  margin: 6px 0 14px;
+}
+
+.cart-title{
+  margin: 0;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: .2px;
+}
+
+.cart-subtitle{
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.cart-layout{
+  display:grid;
+  grid-template-columns: 1.6fr .9fr;
+  gap: 18px;
+}
+
+.cart-card{
+  background:#fff;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.06);
+  padding: 16px;
+}
+
+.cart-card-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.cart-card-title{
+  margin: 0;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.btn-ghost{
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.14);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.btn-ghost:hover{
+  background: rgba(0,0,0,.03);
+}
+
+.cart-items{
+  display:flex;
+  flex-direction:column;
+}
+
+.cart-item{
+  display:grid;
+  grid-template-columns: 72px 1fr auto;
+  gap: 14px;
+  padding: 14px 0;
+  border-top: 1px solid rgba(0,0,0,.08);
+}
+
+.cart-item:first-child{
+  border-top: 0;
+}
+
+.cart-thumb{
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+  overflow:hidden;
+  border: 1px solid rgba(0,0,0,.08);
+  background: var(--bg);
+}
+
+.cart-thumb img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  display:block;
+}
+
+.cart-thumb-placeholder{
+  width:100%;
+  height:100%;
+  background: linear-gradient(135deg, rgba(0,0,0,.04), rgba(0,0,0,.08));
+}
+
+.cart-info{
+  min-width: 0;
+}
+
+.cart-name{
+  font-weight: 900;
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+.cart-meta{
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.cart-actions{
+  margin-top: 12px;
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.qty{
+  display:inline-flex;
+  align-items:center;
+  border: 1px solid rgba(0,0,0,.14);
+  border-radius: 999px;
+  overflow:hidden;
+  background: #fff;
+}
+
+.qty-btn{
+  width: 34px;
+  height: 32px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.qty-input{
+  width: 46px;
+  height: 32px;
+  border: 0;
+  text-align:center;
+  font-weight: 800;
+  outline: none;
+}
+
+.link-danger{
+  border:0;
+  background: transparent;
+  color: #d02d2d;
+  font-weight: 900;
+  cursor:pointer;
+}
+
+.link-danger:hover{
+  text-decoration: underline;
+}
+
+.cart-line-total{
+  font-weight: 900;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.cart-empty{
+  text-align:center;
+  padding: 28px 10px;
+}
+
+.cart-empty p{
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.cart-summary .summary-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin: 10px 0;
+  font-weight: 800;
+}
+
+.cart-summary .summary-row.total{
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(0,0,0,.18);
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.btn-full{
+  width: 100%;
+  margin-top: 10px;
+}
+
+.summary-note{
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 900px){
+  .cart-layout{
+    grid-template-columns: 1fr;
+  }
+
+  .cart-item{
+    grid-template-columns: 64px 1fr;
+  }
+
+  .cart-thumb{
+    width: 64px;
+    height: 64px;
+  }
+
+  .cart-line-total{
+    grid-column: 2 / 3;
+    text-align: left;
+    margin-top: 6px;
+  }
+}
+
+/* ====== 購物車：移除 number input 右側上下調整箭頭（spinner） ====== */
+/* Chrome / Edge / Safari */
+  .qty-input::-webkit-outer-spin-button,
+  .qty-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  .qty-input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+  /* =====  cartEmpty  ===== */
+  .is-hidden{
+    display: none !important;
+  }
+
 /* =========================================================
    INDEX.html - Footer
    ========================================================= */

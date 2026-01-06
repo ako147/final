@@ -70,9 +70,9 @@ document.addEventListener("DOMContentLoaded", () => {
         zoomImg.style.top = moveY + 'px';
     });
 
-
-    // =================== 加入購物車動畫 ===================
+    // =================== 加入購物車 ===================
     cartBtn.addEventListener('click', () => {
+        // 1) 按鈕動畫（保留你原本效果）
         cartBtn.classList.add('added');
         cartBtn.textContent = '已加入 ✔';
 
@@ -80,6 +80,43 @@ document.addEventListener("DOMContentLoaded", () => {
             cartBtn.classList.remove('added');
             cartBtn.textContent = '加入購物車';
         }, 1500);
+
+        // 2) 蒐集商品資料（從頁面抓）
+        const title = document.querySelector(".product-title")?.textContent.trim() || "未命名商品";
+
+        const priceText = document.querySelector(".price")?.textContent || "0";
+        const price = Number(priceText.replace(/[^\d]/g, "")) || 0; // "NT$3,980" -> 3980
+
+        const qty = Math.max(1, parseInt(qtyInput.value || "1", 10));
+
+        // 重要：商品頁的圖片是 ../image/... ，但 cart.html 在根目錄
+        // 所以把 ../ 去掉，讓購物車用 image/... 才找得到
+        let image = mainImg?.getAttribute("src") || "";
+        image = image.replace(/^\.\.\//, ""); // "../image/..." -> "image/..."
+
+        const spec = specSelect?.value || "default"; // gold / gray...
+
+        // 3) 設定商品 id（同商品不同規格分開）
+        const id = `goods-1-${spec}`;
+
+        // 4) 真正加入購物車（VHCart 來自 cart.js）
+        if (!window.VHCart || typeof window.VHCart.add !== "function") {
+            alert("購物車功能未載入（找不到 VHCart）。請確認商品頁有載入 ../cart.js");
+            return;
+        }
+
+        window.VHCart.add({
+            id,
+            title: `${title} (${spec})`,
+            price,
+            image,
+            qty
+        });
+
+        // 5) 加入後跳去購物車（這頁在 goods/ 底下，所以要 ../cart.html）
+        setTimeout(() => {
+            window.location.href = "../cart.html";
+        }, 300);
     });
 
     // =================== 數量控制 ===================
@@ -196,3 +233,4 @@ document.addEventListener("DOMContentLoaded", () => {
     renderMessages();
     updateRatingSummary();
 });
+// =================== cart.js ===================

@@ -40,6 +40,27 @@
             }
         }
 
+        function getCartCount() {
+            try {
+                const raw = localStorage.getItem("vh_cart")
+                || localStorage.getItem("cart")
+                || localStorage.getItem("cartItems")
+                || "[]";
+                const items = JSON.parse(raw);
+                if (!Array.isArray(items)) return 0;
+                return items.reduce((sum, it) => sum + (parseInt(it.qty ?? it.quantity ?? 1, 10) || 1), 0);
+            } catch {
+                return 0;
+            }
+            }
+
+            function updateCartBadge() {
+            const el = document.getElementById("cartCount");
+            if (!el) return;
+            el.textContent = String(getCartCount());
+            }
+
+
         // 切換下拉選單
         function toggleDropdown() {
             const dropdown = document.getElementById('dropdown');
@@ -69,12 +90,10 @@
         document.addEventListener('DOMContentLoaded', function() {
             console.log('頁面載入完成，開始檢查登入狀態');
             checkLoginStatus();
+            updateCartBadge();
         });
 
-        // 當 localStorage 改變時也檢查
-        window.addEventListener('storage', function(e) {
-            if (e.key === 'currentUser') {
-                console.log('偵測到登入狀態改變');
-                checkLoginStatus();
-            }
+        window.addEventListener("vhcartchange", updateCartBadge);
+        window.addEventListener("storage", function(e){
+            if (["vh_cart","cart","cartItems"].includes(e.key)) updateCartBadge();
         });
