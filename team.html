@@ -12,21 +12,38 @@
 <body>
   <!-- Header -->
   <header class="site-header">
-    <div class="nav-inner">
-      <a href="index.html" class="logo">VisionHub</a>
-      <nav class="nav-links">
+        <div class="nav-inner">
+            <a href="index.html" class="logo">VisionHub</a>
+
+            <nav class="nav-links">
                 <a href="index.html">首頁</a>
                 <a href="products.html">商品總覽</a>
                 <a href="team.html">組員介紹</a>
                 <a href="about.html">聯絡我們</a>
-        </nav>
+            </nav>
 
-      <div class="nav-actions">
-        <a class="btn-link" href="login.html">登入</a>
-        <a class="btn-primary" href="register.html">註冊</a>
-      </div>
-    </div>
-  </header>
+            <!-- 登入/註冊按鈕（未登入時顯示） -->
+            <div class="nav-actions" id="authButtons">
+                <a class="btn-link" href="login.html">登入</a>
+                <a class="btn-primary" href="register.html">註冊</a>
+            </div>
+
+            <!-- 使用者選單（登入後顯示） -->
+            <div class="user-menu" id="userMenu" style="display: none;">
+                <div class="user-info" onclick="toggleDropdown()">
+                    <div class="user-avatar" id="userAvatar">U</div>
+                    <span class="user-name" id="userName">使用者</span>
+                </div>
+                <div class="dropdown" id="dropdown">
+                    <a href="#">我的帳戶</a>
+                    <a href="#">訂單記錄</a>
+                    <a href="cart.html">購物車 <span class="cart-badge" id="cartCount">0</span></a><hr>
+                    <hr>
+                    <button onclick="logout()">登出</button>
+                </div>
+            </div>
+        </div>
+    </header>
 
   <!-- Main -->
   <main class="page">
@@ -96,9 +113,11 @@
       </div>
     </div>
   </footer>
-
+  <script src="index.js" defer></script>
   <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
+    // 自動更新版權年份
+    document.getElementById('y').textContent = new Date().getFullYear();
+    
   </script>
 </body>
 </html>
