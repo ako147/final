@@ -1,0 +1,118 @@
+/* ===============================
+   Policy Page（隱私權 / 服務條款）
+   =============================== */
+
+.policy-page {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 56px 64px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.06),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+  line-height: 1.9;
+  animation: policyFadeUp 0.7s ease-out both;
+}
+
+/* 進場動畫 */
+@keyframes policyFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 主標題 */
+.policy-page h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin-bottom: 28px;
+  letter-spacing: 0.02em;
+  position: relative;
+}
+
+/* 主標題底線特效 */
+.policy-page h1::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 4px;
+  background: linear-gradient(90deg, #1c572a, #22c55e);
+  border-radius: 2px;
+  margin-top: 12px;
+}
+
+/* 區塊標題 */
+.policy-page h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-top: 48px;
+  margin-bottom: 14px;
+  padding-left: 14px;
+  border-left: 4px solid #1c572a;
+}
+
+/* 內文 */
+.policy-page p {
+  color: #444;
+  margin-bottom: 16px;
+  font-size: 1rem;
+}
+
+/* 清單 */
+.policy-page ul {
+  margin: 16px 0 24px 20px;
+  padding-left: 20px;
+}
+
+.policy-page li {
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 8px;
+}
+
+/* list hover 微特效 */
+.policy-page li:hover {
+  color: #111;
+  transform: translateX(4px);
+  transition: 0.2s ease;
+}
+
+/* 分隔線 */
+.policy-page hr {
+  margin: 56px 0;
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(0, 0, 0, 0.15),
+    transparent
+  );
+}
+
+/* Email 強調 */
+.policy-page strong {
+  color: #4f46e5;
+}
+
+/* RWD */
+@media (max-width: 768px) {
+  .policy-page {
+    padding: 36px 28px;
+    margin: 40px 16px;
+  }
+
+  .policy-page h1 {
+    font-size: 1.9rem;
+  }
+
+  .policy-page h2 {
+    font-size: 1.15rem;
+  }
+}
