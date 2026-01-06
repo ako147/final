@@ -133,6 +133,28 @@ document.addEventListener("DOMContentLoaded", () => {
       list.appendChild(card);
     });
   }
+  const tabs = document.querySelectorAll('.mini-tab');
+    const panels = document.querySelectorAll('.acc-panel');
+
+    tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        // 切換按鈕 active
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        // 切換內容區
+        const target = tab.dataset.accTab; // profile 或 orders
+        panels.forEach(panel => {
+        if(panel.id === 'tab-' + target){
+            panel.removeAttribute('hidden');
+            panel.classList.add('fade-in');
+        } else {
+            panel.setAttribute('hidden', '');
+            panel.classList.remove('fade-in');
+        }
+        });
+    });
+    });
 
   function escapeHtml(str) {
     return String(str)
