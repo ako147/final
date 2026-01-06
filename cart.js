@@ -5,7 +5,6 @@
   const $ = (sel) => document.querySelector(sel);
 
   function readRaw() {
-    // 先讀 vh_cart，沒有就兼容舊 key
     let raw = localStorage.getItem(KEY_PRIMARY);
     if (!raw) {
       for (const k of KEY_FALLBACKS) {
@@ -28,7 +27,6 @@
 
   function saveCart(items) {
     localStorage.setItem(KEY_PRIMARY, JSON.stringify(items));
-    // 同步觸發：讓同頁面的 badge 也能立刻更新
     window.dispatchEvent(new Event("vhcartchange"));
   }
 
@@ -44,17 +42,18 @@
       ? item.price
       : parsePrice(item.price);
 
-    const qty = clampInt(item.qty ?? item.quantity ?? 1, 1, 99);
+    const stock = clampInt(item.stock ?? 99, 1, 9999); // 每個商品的庫存
+    const qty = clampInt(item.qty ?? 1, 1, stock);
 
     const image = item.image ? String(item.image) : "";
 
-    return { id, title, price, qty, image };
+    return { id, title, price, qty, stock, image };
   }
 
   function parsePrice(v) {
     if (v == null) return 0;
     const s = String(v);
-    const n = Number(s.replace(/[^\d]/g, "")); // "NT$2,786" -> 2786
+    const n = Number(s.replace(/[^\d]/g, ""));
     return Number.isFinite(n) ? n : 0;
   }
 
@@ -77,7 +76,6 @@
     return items.reduce((sum, it) => sum + it.qty, 0);
   }
 
-  // 暴露給其他頁面用（之後你要在 good?.html 加入購物車就能直接呼叫）
   window.VHCart = {
     get() { return loadCart(); },
     add(item) {
@@ -86,7 +84,7 @@
       if (!it) return;
 
       const found = items.find(x => x.id === it.id);
-      if (found) found.qty = clampInt(found.qty + it.qty, 1, 99);
+      if (found) found.qty = clampInt(found.qty + it.qty, 1, found.stock);
       else items.push(it);
 
       saveCart(items);
@@ -99,7 +97,7 @@
       const items = loadCart();
       const it = items.find(x => x.id === String(id));
       if (!it) return;
-      it.qty = clampInt(qty, 1, 99);
+      it.qty = clampInt(qty, 1, it.stock);
       saveCart(items);
     },
     clear() { saveCart([]); },
@@ -139,11 +137,12 @@
         <div class="cart-info">
           <div class="cart-name">${escapeHtml(it.title)}</div>
           <div class="cart-meta">單價 ${formatMoney(it.price)}</div>
+          <div class="cart-stock">庫存剩 ${it.stock} 件</div>
 
           <div class="cart-actions">
             <div class="qty" aria-label="數量調整">
               <button class="qty-btn" type="button" data-action="dec" aria-label="減少">−</button>
-              <input class="qty-input" type="number" min="1" max="99" value="${it.qty}" inputmode="numeric" />
+              <input class="qty-input" type="number" min="1" max="${it.stock}" value="${it.qty}" inputmode="numeric" />
               <button class="qty-btn" type="button" data-action="inc" aria-label="增加">+</button>
             </div>
 
@@ -162,7 +161,7 @@
 
   function updateSummary(items) {
     const sub = subtotal(items);
-    const shipping = sub >= 999 || sub === 0 ? 0 : 60; // 你們跑馬燈有「滿999免運」，就順便套一下
+    const shipping = sub >= 999 || sub === 0 ? 0 : 60;
     const total = sub + shipping;
 
     const elSub = $("#subtotal");
@@ -200,8 +199,8 @@
         const it = items.find(x => x.id === id);
         if (!it) return;
 
-        if (action === "inc") it.qty = clampInt(it.qty + 1, 1, 99);
-        if (action === "dec") it.qty = clampInt(it.qty - 1, 1, 99);
+        if (action === "inc") it.qty = clampInt(it.qty + 1, 1, it.stock);
+        if (action === "dec") it.qty = clampInt(it.qty - 1, 1, it.stock);
         if (action === "remove") {
           saveCart(items.filter(x => x.id !== id));
           render();
@@ -220,13 +219,13 @@
         if (!row) return;
 
         const id = row.dataset.id;
-        const qty = clampInt(input.value, 1, 99);
-
         const items = loadCart();
         const it = items.find(x => x.id === id);
         if (!it) return;
 
+        const qty = clampInt(input.value, 1, it.stock);
         it.qty = qty;
+
         saveCart(items);
         render();
       });
@@ -263,7 +262,6 @@
     }
 
     window.addEventListener("vhcartchange", () => {
-      // cart page 自己更新
       render();
     });
   }
