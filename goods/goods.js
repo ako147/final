@@ -33,30 +33,26 @@ document.addEventListener("DOMContentLoaded", () => {
   // ✅ 組合商品資料（加入購物車用）
   function buildCartItem() {
     const title = document.querySelector(".product-title")?.textContent.trim() || "未命名商品";
-
     const priceText = document.querySelector(".price")?.textContent || "0";
-    const price = Number(priceText.replace(/[^\d]/g, "")) || 0; // "NT$3,980" -> 3980
+    const price = Number(priceText.replace(/[^\d]/g, "")) || 0;
 
     const qty = Math.max(1, parseInt(qtyInput?.value || "1", 10));
-
-    // 重要：商品頁圖片多半是 ../image/...，但 cart.html 在根目錄
-    // 所以把 ../ 去掉，讓購物車用 image/... 才找得到
-    let image = mainImg?.getAttribute("src") || "";
-    image = image.replace(/^\.\.\//, ""); // "../image/..." -> "image/..."
-
     const spec = specSelect?.value || "default";
+    const stock = getCurrentStock();
 
-    // 同商品不同規格分開（避免不同規格加在同一筆）
-    const id = `goods-1-${spec}`;
+    let image = mainImg?.getAttribute("src") || "";
+    image = image.replace(/^\.\.\//, "");
 
     return {
-      id,
+      id: `goods-15-${spec}`,       // 同商品不同規格不同 id
       title: `${title} (${spec})`,
       price,
       image,
       qty,
+      stock                        // ✅ 關鍵
     };
   }
+
 
   // ✅ 真正加入購物車（可選要不要跳頁）
   function addToCart({ redirect = false } = {}) {
@@ -82,12 +78,40 @@ document.addEventListener("DOMContentLoaded", () => {
       zoomImg.src = thumb.src;
     });
   });
+  // =================== 庫存顯示與數量控制 ===================
+  function getCurrentStock() {
+    const opt = specSelect?.selectedOptions?.[0];
+    return opt ? parseInt(opt.dataset.stock, 10) || 0 : 0;
+  }
+
+  function updateStockUI() {
+    const stock = getCurrentStock();
+    const stockEl = document.querySelector(".stock");
+
+    if (!stockEl) return;
+
+    if (stock <= 0) {
+      stockEl.textContent = "缺貨中";
+      qtyInput.value = 0;
+      plusBtn.disabled = true;
+      minusBtn.disabled = true;
+      cartBtn.disabled = true;
+      buyBtn.disabled = true;
+    } else {
+      stockEl.textContent = `現庫存剩下 ${stock} 件`;
+      qtyInput.value = Math.min(Math.max(1, qtyInput.value), stock);
+      plusBtn.disabled = false;
+      minusBtn.disabled = false;
+      cartBtn.disabled = false;
+      buyBtn.disabled = false;
+    }
+  }
 
   // =================== 規格切換 ===================
   specSelect?.addEventListener("change", () => {
     const selectedSpec = specSelect.value;
 
-    thumbnails.forEach((img) => {
+    thumbnails.forEach(img => {
       img.style.display = img.dataset.spec === selectedSpec ? "block" : "none";
     });
 
@@ -96,7 +120,11 @@ document.addEventListener("DOMContentLoaded", () => {
       mainImg.src = firstImg.src;
       zoomImg.src = firstImg.src;
     }
+
+    updateStockUI();   // ✅ 切規格就更新庫存
+    updateCartBadge();
   });
+
 
   // =================== 放大鏡 ===================
   mainImageDiv?.addEventListener("mouseenter", () => {
@@ -167,26 +195,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 加號按鈕
     plusBtn.addEventListener("click", () => {
-        let current = parseInt(qtyInput.value) || 1;
-        if (current < maxStock) {
-            qtyInput.value = current + 1;
-        }
+      const stock = getCurrentStock();
+      let current = parseInt(qtyInput.value) || 1;
+      if (current < stock) qtyInput.value = current + 1;
     });
 
-    // 減號按鈕
     minusBtn.addEventListener("click", () => {
-        let current = parseInt(qtyInput.value) || 1;
-        if (current > 1) {
-            qtyInput.value = current - 1;
-        }
+      let current = parseInt(qtyInput.value) || 1;
+      if (current > 1) qtyInput.value = current - 1;
     });
 
-    // 使用者直接輸入數字
     qtyInput.addEventListener("input", () => {
-        let current = parseInt(qtyInput.value) || 1;
-        if (current > maxStock) qtyInput.value = maxStock;
-        if (current < 1) qtyInput.value = 1;
+      const stock = getCurrentStock();
+      let current = parseInt(qtyInput.value) || 1;
+      if (current > stock) qtyInput.value = stock;
+      if (current < 1) qtyInput.value = 1;
     });
+
 
   // =================== 商品資訊三欄切換 ===================
   tabButtons.forEach((btn) => {
