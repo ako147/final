@@ -364,59 +364,244 @@ footer{
    INDEX.html - Categories
    ========================================================= */
 
-/* ===== Categories ===== */
-.categories{
-  max-width: var(--container);
-  margin: 0 auto;
-  padding-top: 18px;
-  padding-bottom: 54px;
+  /* ===== Categories ===== */
+  .categories{
+    max-width: var(--container);
+    margin: 0 auto;
+    padding-top: 18px;
+    padding-bottom: 54px;
+  }
+
+  .categories h3{
+    font-size: 22px;
+    margin-bottom: 18px;
+    letter-spacing: .2px;
+  }
+
+  .category-list{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .category{
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 18px 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.05);
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  }
+
+  .category:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(0,0,0,.08);
+    border-color: rgba(47,111,106,.18);
+  }
+
+  .category h4{
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .category p{
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* 小標籤 */
+  .category h4::before{
+    content: "•";
+    color: var(--accent-2);
+    margin-right: 8px;
+    font-weight: 900;
+  }
+/* =========================================================
+   index.html - Hero Slider override 
+   ========================================================= */
+.hero[aria-label="主視覺大廣告輪播"]{
+  display:block;
+  padding:28px 0;
 }
 
-.categories h3{
-  font-size: 22px;
-  margin-bottom: 18px;
-  letter-spacing: .2px;
+/* container */
+.hero[aria-label="主視覺大廣告輪播"] .hero-slider{
+  position:relative;
+  overflow:hidden;
+  border-radius:24px;
+  box-shadow:0 14px 32px rgba(0,0,0,.12);
 }
 
-.category-list{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+/* track */
+.hero[aria-label="主視覺大廣告輪播"] .hero-slides{
+  display:flex;
+  transition:transform .55s ease;
 }
 
-.category{
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 18px 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,.05);
-  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+/* slide */
+.hero[aria-label="主視覺大廣告輪播"] .hero-slide{
+  position:relative;
+  min-width:100%;
+  height:440px;
 }
 
-.category:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 14px 28px rgba(0,0,0,.08);
-  border-color: rgba(47,111,106,.18);
+/* image */
+.hero[aria-label="主視覺大廣告輪播"] .hero-slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
 }
 
-.category h4{
-  font-size: 16px;
-  margin-bottom: 6px;
+/* overlay */
+.hero[aria-label="主視覺大廣告輪播"] .hero-slide::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    90deg,
+    rgba(0,0,0,.52) 0%,
+    rgba(0,0,0,.30) 38%,
+    rgba(0,0,0,.10) 62%,
+    rgba(0,0,0,0) 78%
+  );
 }
 
-.category p{
-  font-size: 13px;
-  color: var(--muted);
+/* text block */
+.hero[aria-label="主視覺大廣告輪播"] .hero-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:0 64px;
+  max-width:560px;
+  z-index:2;
+  color:#fff;
 }
 
-/* 小標籤 */
-.category h4::before{
-  content: "•";
-  color: var(--accent-2);
-  margin-right: 8px;
-  font-weight: 900;
+.hero[aria-label="主視覺大廣告輪播"] .hero-overlay h2{
+  font-size:42px;
+  line-height:1.15;
+  margin-bottom:10px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
+.hero[aria-label="主視覺大廣告輪播"] .hero-overlay p{
+  font-size:15px;
+  line-height:1.7;
+  color:rgba(255,255,255,.88);
+  margin-bottom:18px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* cta */
+.hero[aria-label="主視覺大廣告輪播"] .hero-cta{
+  width:fit-content;
+  padding:11px 18px;
+  border-radius:999px;
+  background:rgba(47,111,106,.92);
+  color:#fff;
+  font-weight:700;
+  border:none;
+  box-shadow:0 10px 22px rgba(0,0,0,.22);
+}
+
+/* arrows*/
+.hero[aria-label="主視覺大廣告輪播"] .hero-btn{
+  position:absolute !important;
+  top:50% !important;
+  bottom:auto !important;
+  transform:translateY(-50%) !important;
+
+  width:34px;
+  height:34px;
+  border-radius:999px;
+  background:rgba(255,255,255,.86);
+  color:#222;
+  border:none;
+  box-shadow:0 8px 18px rgba(0,0,0,.18);
+
+  /* 關鍵：用 flex 強制字元置中 */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:18px;
+  line-height:1;
+
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .18s ease;
+  z-index:3;
+}
+
+
+.hero[aria-label="主視覺大廣告輪播"] .hero-slider:hover .hero-btn{
+  opacity:.95;
+  pointer-events:auto;
+}
+
+.hero[aria-label="主視覺大廣告輪播"] .hero-btn.prev{
+  left:18px !important;
+  right:auto !important;
+}
+
+.hero[aria-label="主視覺大廣告輪播"] .hero-btn.next{
+  right:18px !important;
+  left:auto !important;
+}
+
+/* dots: 放正中 + 底部背景透明(你說的 bottom) */
+.hero[aria-label="主視覺大廣告輪播"] .hero-dots{
+  position:absolute !important;
+  left:50% !important;
+  right:auto !important;
+  bottom:16px !important;
+  transform:translateX(-50%) !important;
+  display:flex;
+  gap:10px;
+  padding:0;                     /* 透明：不要底條 */
+  background:transparent;        /* ← 你要透明 */
+  border:none;
+  box-shadow:none;
+  z-index:3;
+}
+
+.hero[aria-label="主視覺大廣告輪播"] .hero-dot{
+  width:3px;
+  height:3px;
+  border-radius:999px;
+  background:rgba(255,255,255,.45);
+  border:1px solid rgba(255,255,255,.28);
+}
+
+.hero[aria-label="主視覺大廣告輪播"] .hero-dot.is-active{
+  width:24px;
+  background:#fff;
+  border-color:rgba(255,255,255,.35);
+}
+
+/* rwd */
+@media (max-width:900px){
+  .hero[aria-label="主視覺大廣告輪播"] .hero-slide{ height:380px; }
+  .hero[aria-label="主視覺大廣告輪播"] .hero-overlay{
+    padding:0 28px;
+    max-width:none;
+  }
+  .hero[aria-label="主視覺大廣告輪播"] .hero-overlay h2{
+    font-size:34px;
+  }
+}
+
+@media (max-width:520px){
+  .hero[aria-label="主視覺大廣告輪播"] .hero-slide{ height:320px; }
+  .hero[aria-label="主視覺大廣告輪播"] .hero-overlay h2{ font-size:26px; }
+}
 /* =========================================================
    INDEX.html - Footer
    ========================================================= */

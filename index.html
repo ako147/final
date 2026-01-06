@@ -64,46 +64,47 @@
         </div>
     </section>
 
-    <!-- ===== Hero Section ===== -->
-<section class="hero">
-    <div class="hero-text">
-        <h2>看見生活的美好細節</h2>
-        <p>精選質感眼鏡，結合設計美學與日常實用，為你的每一天帶來清晰與風格。</p>
-        <button onclick="window.location.href='allgoods.html'">立即選購</button>
-    </div>
-
-    <div class="hero-image">
-        <img src="image/index/1.png" alt="VisionHub 主視覺眼鏡">
-    </div>
-</section>
-=======
-
-    <!-- ===== Categories ===== -->
-    <section class="categories">
-        <h3>商品分類</h3>
-
-        <div class="category-list">
-            <div class="category">
-                <h4>光學眼鏡</h4>
-                <p>適合日常配戴的經典與現代鏡框設計。</p>
-            </div>
-
-            <div class="category">
-                <h4>太陽眼鏡</h4>
-                <p>兼具造型與防護，為戶外時光增添風格。</p>
-            </div>
-
-            <div class="category">
-                <h4>抗藍光眼鏡</h4>
-                <p>有效減緩長時間使用螢幕造成的眼睛疲勞。</p>
-            </div>
-
-            <div class="category">
-                <h4>配件周邊</h4>
-                <p>眼鏡盒、拭鏡布與日常保養必備配件。</p>
-            </div>
+<!-- ===== Hero Slider  ===== -->
+<section class="hero" aria-label="主視覺大廣告輪播">
+  <div class="hero-slider" id="heroSlider">
+    <div class="hero-slides">
+      <!-- Slide 1 -->
+      <article class="hero-slide">
+        <img src="image/index/1.png" alt="新品上市｜極簡金屬鏡框" />
+        <div class="hero-overlay">
+          <h2>看見生活的美好細節</h2>
+          <p>精選質感眼鏡，結合設計美學與日常實用，</p>
+          <p>為你的每一天帶來清晰與風格。</p>
+          <button class="hero-cta" onclick="window.location.href='products.html'">立即選購</button>
         </div>
-    </section>
+      </article>
+
+      <!-- Slide 2 -->
+      <article class="hero-slide">
+        <img src="image/index/2.png" alt="抗藍光系列限時 8 折" />
+        <div class="hero-overlay">
+          <h2>抗藍光系列｜限時 8 折</h2>
+          <p>長時間螢幕工作，也能舒適清晰。</p>
+          <button class="hero-cta" onclick="window.location.href='products.html'">看更多</button>
+        </div>
+      </article>
+
+      <!-- Slide 3 -->
+      <article class="hero-slide">
+        <img src="image/index/3.png" alt="全館滿 NT$999 免運" />
+        <div class="hero-overlay">
+          <h2>全館滿 NT$999 免運 </h2>
+          <p>把喜歡的款式一次帶齊，運費我們出。</p>
+          <button class="hero-cta" onclick="window.location.href='products.html'">開始逛逛</button>
+        </div>
+      </article>
+    </div>
+
+    <button class="hero-btn prev" type="button" aria-label="上一張">‹</button>
+    <button class="hero-btn next" type="button" aria-label="下一張">›</button>
+    <div class="hero-dots" aria-label="輪播指示點"></div>
+  </div>
+</section>
 
     <!-- ===== Footer ===== -->
     <footer>
@@ -117,85 +118,140 @@
     </footer>
 
     <script>
-        // 檢查使用者登入狀態
-        function checkLoginStatus() {
-            const currentUser = localStorage.getItem('currentUser');
-            const authButtons = document.getElementById('authButtons');
-            const userMenu = document.getElementById('userMenu');
+    // 檢查使用者登入狀態
+    function checkLoginStatus() {
+        const currentUser = localStorage.getItem('currentUser');
+        const authButtons = document.getElementById('authButtons');
+        const userMenu = document.getElementById('userMenu');
 
-            console.log('檢查登入狀態:', currentUser); 
+        if (!authButtons || !userMenu) return;
 
-            if (currentUser && currentUser !== 'null') {
-                try {
-                    const user = JSON.parse(currentUser);
-                    
-                    // 已登入，隱藏登入/註冊按鈕，顯示使用者選單
-                    authButtons.style.display = 'none';
-                    userMenu.style.display = 'block';
-                    
-                    // 設定使用者資訊
-                    const userName = document.getElementById('userName');
-                    const userAvatar = document.getElementById('userAvatar');
-                    
-                    if (userName && userAvatar) {
-                        userName.textContent = user.username;
-                        userAvatar.textContent = user.username.charAt(0).toUpperCase();
-                    }
-                    
-                    console.log('已登入使用者:', user.username);
-                } catch (e) {
-                    console.error('解析使用者資料錯誤:', e);
-                    // 如果資料有問題，清除並顯示登入按鈕
-                    localStorage.removeItem('currentUser');
-                    authButtons.style.display = 'flex';
-                    userMenu.style.display = 'none';
-                }
-            } else {
-                // 未登入，顯示登入/註冊按鈕
-                authButtons.style.display = 'flex';
-                userMenu.style.display = 'none';
-                console.log('使用者未登入');
+        if (currentUser && currentUser !== 'null') {
+        try {
+            const user = JSON.parse(currentUser);
+
+            authButtons.style.display = 'none';
+            userMenu.style.display = 'block';
+
+            const userName = document.getElementById('userName');
+            const userAvatar = document.getElementById('userAvatar');
+            if (userName && userAvatar) {
+            userName.textContent = user.username;
+            userAvatar.textContent = user.username.charAt(0).toUpperCase();
             }
+        } catch (e) {
+            localStorage.removeItem('currentUser');
+            authButtons.style.display = 'flex';
+            userMenu.style.display = 'none';
         }
-
-        // 切換下拉選單
-        function toggleDropdown() {
-            const dropdown = document.getElementById('dropdown');
-            dropdown.classList.toggle('show');
+        } else {
+        authButtons.style.display = 'flex';
+        userMenu.style.display = 'none';
         }
+    }
 
-        // 登出功能
-        function logout() {
-            if (confirm('確定要登出嗎？')) {
-                localStorage.removeItem('currentUser');
-                alert('已成功登出');
-                window.location.reload(); // 重新載入頁面
-            }
+    // 切換下拉選單
+    function toggleDropdown() {
+        const dropdown = document.getElementById('dropdown');
+        if (!dropdown) return;
+        dropdown.classList.toggle('show');
+    }
+
+    // 登出
+    function logout() {
+        if (confirm('確定要登出嗎？')) {
+        localStorage.removeItem('currentUser');
+        alert('已成功登出');
+        window.location.reload();
         }
+    }
 
-        // 點擊其他地方關閉下拉選單
-        document.addEventListener('click', function(event) {
-            const userMenu = document.getElementById('userMenu');
-            const dropdown = document.getElementById('dropdown');
-            
-            if (userMenu && !userMenu.contains(event.target)) {
-                dropdown.classList.remove('show');
-            }
+    // 點擊空白處關閉下拉
+    document.addEventListener('click', function (event) {
+        const userMenu = document.getElementById('userMenu');
+        const dropdown = document.getElementById('dropdown');
+        if (!userMenu || !dropdown) return;
+
+        if (!userMenu.contains(event.target)) {
+        dropdown.classList.remove('show');
+        }
+    });
+
+    // Hero Slider
+    function initHeroSlider() {
+        const slider = document.getElementById('heroSlider');
+        if (!slider) return;
+
+        const track = slider.querySelector('.hero-slides');
+        const slides = Array.from(slider.querySelectorAll('.hero-slide'));
+        const prevBtn = slider.querySelector('.hero-btn.prev');
+        const nextBtn = slider.querySelector('.hero-btn.next');
+        const dotsWrap = slider.querySelector('.hero-dots');
+
+        if (!track || slides.length === 0 || !dotsWrap) return;
+
+        let index = 0;
+        let timer = null;
+        const intervalMs = 2800;
+
+        // dots
+        dotsWrap.innerHTML = "";
+        const dots = slides.map((_, i) => {
+        const b = document.createElement('button');
+        b.type = "button";
+        b.className = "hero-dot" + (i === 0 ? " is-active" : "");
+        b.setAttribute("aria-label", `切換到第 ${i + 1} 張`);
+        b.addEventListener('click', () => goTo(i, true));
+        dotsWrap.appendChild(b);
+        return b;
         });
 
-        // 頁面載入時檢查登入狀態
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('頁面載入完成，開始檢查登入狀態');
-            checkLoginStatus();
-        });
+        function render() {
+        track.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((d, i) => d.classList.toggle('is-active', i === index));
+        }
 
-        // 當 localStorage 改變時也檢查
-        window.addEventListener('storage', function(e) {
-            if (e.key === 'currentUser') {
-                console.log('偵測到登入狀態改變');
-                checkLoginStatus();
-            }
-        });
+        function goTo(i, userInitiated = false) {
+        index = (i + slides.length) % slides.length;
+        render();
+        if (userInitiated) restart();
+        }
+
+        function next(userInitiated = false) { goTo(index + 1, userInitiated); }
+        function prev(userInitiated = false) { goTo(index - 1, userInitiated); }
+
+        function start() {
+        stop();
+        timer = setInterval(() => next(false), intervalMs);
+        }
+
+        function stop() {
+        if (timer) clearInterval(timer);
+        timer = null;
+        }
+
+        function restart() { start(); }
+
+        if (nextBtn) nextBtn.addEventListener('click', () => next(true));
+        if (prevBtn) prevBtn.addEventListener('click', () => prev(true));
+
+        slider.addEventListener('mouseenter', stop);
+        slider.addEventListener('mouseleave', start);
+
+        render();
+        start();
+    }
+
+    // ✅ 單一初始化入口
+    document.addEventListener('DOMContentLoaded', function () {
+        checkLoginStatus();
+        initHeroSlider();
+    });
+
+    // 其他分頁登入狀態同步
+    window.addEventListener('storage', function (e) {
+        if (e.key === 'currentUser') checkLoginStatus();
+    });
     </script>
 
 </body>
