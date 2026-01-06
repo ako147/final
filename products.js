@@ -210,19 +210,5 @@ function applyFilters(){
     renderProducts(result);
 }
 
-// ===== 排序 =====
-sortBtn.addEventListener("click", ()=>{ sortList.parentElement.classList.toggle("show"); });
-sortList.querySelectorAll("li").forEach(li=>{
-    li.addEventListener("click", ()=>{
-        const sortType = li.dataset.sort;
-        sortBtn.textContent = li.textContent + " ⬍";
-        if(sortType==="newest") currentProducts.sort((a,b)=>b.id-a.id);
-        else if(sortType==="price-desc") currentProducts.sort((a,b)=>b.price-b.price);
-        else if(sortType==="price-asc") currentProducts.sort((a,b)=>a.price-b.price);
-        renderProducts(currentProducts);
-        sortList.parentElement.classList.remove("show");
-    });
-});
-
 // ===== 初始化 =====
 renderProducts(products);

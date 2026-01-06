@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VisionHub｜商品詳情</title>
-  <link rel="stylesheet" href="goods.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品詳情｜VisionHub</title>
+    <link rel="stylesheet" href="goods.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <!-- ===== 共用 風格 ===== -->
     <header class="site-header">
-            <div class="nav-inner">
-                <h1 class="logo">VisionHub</h1>
+        <div class="nav-inner">
+            <a href="../index.html" class="logo">VisionHub</a>
 
-                <nav class="nav-links">
-                    <a href="../index.html">首頁</a>
-                    <a href="../products.html">商品總覽</a>
-                    <a href="#">品牌介紹</a>
-                    <a href="#">聯絡我們</a>
-                </nav>
+            <nav class="nav-links">
+                <a href="../index.html">首頁</a>
+                <a href="../products.html">商品總覽</a>
+                <a href="../team.html">組員介紹</a>
+                <a href="../about.html">聯絡我們</a>
+            </nav>
 
-                <!-- 登入/註冊按鈕（未登入時顯示） -->
-                <div class="nav-actions" id="authButtons">
-                    <a class="btn-link" href="../login.html">登入</a>
-                    <a class="btn-primary" href="../register.html">註冊</a>
+            <!-- 登入/註冊按鈕（未登入時顯示） -->
+            <div class="nav-actions" id="authButtons">
+                <a class="btn-link" href="login.html">登入</a>
+                <a class="btn-primary" href="register.html">註冊</a>
+            </div>
+
+            <!-- 使用者選單（登入後顯示） -->
+            <div class="user-menu" id="userMenu" style="display: none;">
+                <div class="user-info" onclick="toggleDropdown()">
+                    <div class="user-avatar" id="userAvatar">U</div>
+                    <span class="user-name" id="userName">使用者</span>
                 </div>
 
                 <!-- 使用者選單（登入後顯示） -->
@@ -41,7 +53,8 @@
                     </div>
                 </div>
             </div>
-        </header>
+        </div>
+    </header>
 
     <!-- ===== 共用 風格） ===== -->
     <section class="promo-marquee">
