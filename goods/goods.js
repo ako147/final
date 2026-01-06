@@ -150,15 +150,43 @@ document.addEventListener("DOMContentLoaded", () => {
     addToCart({ redirect: true });
   });
 
-  // =================== 數量控制 ===================
-  plusBtn?.addEventListener("click", () => {
-    qtyInput.value = parseInt(qtyInput.value) + 1;
-  });
+    // =================== 數量控制（含庫存限制） ===================
+    // 取得庫存數字
+    const stockElement = document.querySelector(".stock");
+    const stockMatch = stockElement.textContent.match(/\d+/); // 抓取數字
+    const maxStock = stockMatch ? parseInt(stockMatch[0], 10) : 1;
 
-  minusBtn?.addEventListener("click", () => {
-    const current = parseInt(qtyInput.value);
-    if (current > 1) qtyInput.value = current - 1;
-  });
+    // 若庫存為 0，禁用按鈕
+    if (maxStock === 0) {
+        plusBtn.disabled = true;
+        cartBtn.disabled = true;
+        document.querySelector(".btn-buy").disabled = true;
+        stockElement.textContent = "缺貨中";
+        qtyInput.value = 0;
+    }
+
+    // 加號按鈕
+    plusBtn.addEventListener("click", () => {
+        let current = parseInt(qtyInput.value) || 1;
+        if (current < maxStock) {
+            qtyInput.value = current + 1;
+        }
+    });
+
+    // 減號按鈕
+    minusBtn.addEventListener("click", () => {
+        let current = parseInt(qtyInput.value) || 1;
+        if (current > 1) {
+            qtyInput.value = current - 1;
+        }
+    });
+
+    // 使用者直接輸入數字
+    qtyInput.addEventListener("input", () => {
+        let current = parseInt(qtyInput.value) || 1;
+        if (current > maxStock) qtyInput.value = maxStock;
+        if (current < 1) qtyInput.value = 1;
+    });
 
   // =================== 商品資訊三欄切換 ===================
   tabButtons.forEach((btn) => {
