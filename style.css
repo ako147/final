@@ -1133,6 +1133,230 @@ footer a:hover{
   display: block;
 }
 
+/* =========================
+   Account Page
+========================= */
+.account-page{
+  max-width: 1100px;
+  margin: 32px auto 72px;
+  padding: 0 20px;
+}
+
+.account-head{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.account-grid{
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 18px;
+}
+
+@media (max-width: 900px){
+  .account-grid{ grid-template-columns: 1fr; }
+}
+
+.account-card{
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.account-title{
+  font-size: 22px;
+  margin: 0 0 6px;
+  color: var(--text);
+}
+
+.account-subtitle{
+  margin: 0;
+  color: var(--muted);
+}
+
+.account-cta{
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.btn-ghost{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.profile-block{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 14px;
+}
+
+.profile-avatar{
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: rgba(13, 112, 93, .12);
+  color: var(--primary);
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+}
+
+.profile-name{
+  font-weight: 900;
+  color: var(--text);
+}
+
+.profile-email{
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.profile-info .info-row,
+.info-table .info-row{
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px dashed rgba(0,0,0,.08);
+}
+
+.info-row .label{ color: var(--muted); }
+.info-row .value{ color: var(--text); font-weight: 700; }
+
+.account-mini-nav{
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.mini-tab{
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: transparent;
+  font-weight: 800;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.mini-tab.active{
+  border-color: rgba(13,112,93,.35);
+  box-shadow: 0 0 0 3px rgba(13,112,93,.10);
+}
+
+.panel-title{
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.panel-desc{
+  margin: 0 0 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.orders-head{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.empty-box{
+  padding: 16px;
+  border: 1px dashed rgba(0,0,0,.18);
+  border-radius: 14px;
+  color: var(--muted);
+  background: rgba(0,0,0,.02);
+}
+
+.orders-list{
+  display: grid;
+  gap: 12px;
+}
+
+.order-card{
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  background: rgba(255,255,255,.6);
+}
+
+.order-top{
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.order-id{
+  font-weight: 900;
+}
+
+.order-time{
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.order-right{
+  text-align: right;
+}
+
+.order-pill{
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(13,112,93,.12);
+  color: var(--primary);
+  font-weight: 900;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.order-total{
+  font-weight: 900;
+}
+
+.order-items{
+  border-top: 1px solid rgba(0,0,0,.06);
+  padding-top: 10px;
+  display: grid;
+  gap: 8px;
+}
+
+.order-item{
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.oi-title{ color: var(--text); font-weight: 700; }
+.oi-meta{ color: var(--muted); }
+
+
 /* =========================================================
    Member Page - Login/Register Tabs (one page)
    ========================================================= */

@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const ratingText = document.getElementById("ratingText");
   const messageList = document.getElementById("messageList");
   let selectedRating = 0;
+  // 商品 ID（可用於購物車或其他用途）
+  const productId = document.querySelector(".product-title")?.textContent.trim() || "goods-unknown";
 
   // ✅ 徽章更新（下拉選單的購物車數字）
   function updateCartBadge() {
@@ -183,83 +185,91 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // =================== 留言送出 ===================
-  document.getElementById("submitMessage")?.addEventListener("click", () => {
-    const username = document.getElementById("username").value.trim();
-    const message = document.getElementById("message").value.trim();
+    document.getElementById("submitMessage").addEventListener("click", () => {
+        const username = document.getElementById("username").value.trim();
+        const message = document.getElementById("message").value.trim();
 
-    if (!username || !message || selectedRating === 0) {
-      alert("請填寫姓名、留言內容並選擇星級");
-      return;
-    }
+        if (!username || !message || selectedRating === 0) {
+            alert("請填寫姓名、留言內容並選擇星級");
+            return;
+        }
 
-    const newMessage = {
-      username,
-      message,
-      rating: selectedRating,
-      time: new Date().toLocaleString(),
-    };
+        const newMessage = {
+            username,
+            message,
+            rating: selectedRating,
+            time: new Date().toLocaleString()
+        };
 
-    const productId = document.querySelector(".product-title")?.textContent.trim() || "goods-unknown";
-    const messages = JSON.parse(localStorage.getItem(`messages-${productId}`)) || [];
-    messages.unshift(newMessage);
-    localStorage.setItem(`messages-${productId}`, JSON.stringify(messages));
+        // 取得商品 ID
+        const productId = document.querySelector(".product-title")?.textContent.trim() || "goods-unknown";
 
-    renderMessages();
-    updateRatingSummary();
+        // 從 localStorage 取出該商品留言
+        const messages = JSON.parse(localStorage.getItem(`messages-${productId}`)) || [];
 
-    document.getElementById("username").value = "";
-    document.getElementById("message").value = "";
-    selectedRating = 0;
-    stars.forEach((s) => s.classList.remove("active"));
-    ratingText.textContent = "請選擇評分";
-  });
+        // 新增留言到最前面
+        messages.unshift(newMessage);
+
+        // 存回 localStorage
+        localStorage.setItem(`messages-${productId}`, JSON.stringify(messages));
+        
+        // 重新顯示留言和更新評分
+
+        renderMessages();
+        updateRatingSummary();
+
+        // 清空輸入
+        document.getElementById("username").value = "";
+        document.getElementById("message").value = "";
+        selectedRating = 0;
+        stars.forEach(s => s.classList.remove("active"));
+        ratingText.textContent = "請選擇評分";
+    });
+
 
   // =================== 顯示留言 ===================
-  function renderMessages() {
-    const productId = document.querySelector(".product-title")?.textContent.trim() || "goods-unknown";
-    const messages = JSON.parse(localStorage.getItem(`messages-${productId}`)) || [];
-    if (!messageList) return;
+    function renderMessages() {
+        const productId = document.querySelector(".product-title")?.textContent.trim() || "goods-unknown";
+        const messages = JSON.parse(localStorage.getItem(`messages-${productId}`)) || [];
+        messageList.innerHTML = "";
 
-    messageList.innerHTML = "";
-    messages.forEach((msg) => {
-      const div = document.createElement("div");
-      div.className = "message-item";
-      div.innerHTML = `
-        <div class="message-header">
-          ${msg.username}
-          <span class="message-time">${msg.time}</span>
-        </div>
-        <div class="message-content">
-          ${"★".repeat(msg.rating)}${"☆".repeat(5 - msg.rating)}<br>
-          ${msg.message}
-        </div>
-      `;
-      messageList.appendChild(div);
-    });
-  }
+        messages.forEach(msg => {
+            const div = document.createElement("div");
+            div.className = "message-item";
+            div.innerHTML = `
+                <div class="message-header">
+                    ${msg.username}
+                    <span class="message-time">${msg.time}</span>
+                </div>
+                <div class="message-content">
+                    ${"★".repeat(msg.rating)}${"☆".repeat(5 - msg.rating)}<br>
+                    ${msg.message}
+                </div>
+            `;
+            messageList.appendChild(div);
+        });
+    }
 
   // =================== 更新平均星級 ===================
   function updateRatingSummary() {
-    const productId = document.querySelector(".product-title")?.textContent.trim() || "goods-unknown";
-    const messages = JSON.parse(localStorage.getItem(`messages-${productId}`)) || [];
-    const ratingStars = document.getElementById("ratingStars");
-    const ratingInfo = document.getElementById("ratingInfo");
+      const productId = document.querySelector(".product-title")?.textContent.trim() || "goods-unknown";
+        const messages = JSON.parse(localStorage.getItem(`messages-${productId}`)) || [];
+        const ratingStars = document.getElementById("ratingStars");
+        const ratingInfo = document.getElementById("ratingInfo");
 
-    if (!ratingStars || !ratingInfo) return;
+        if (messages.length === 0) {
+            ratingStars.textContent = "☆☆☆☆☆";
+            ratingInfo.textContent = "0.0（0 則評價）";
+            return;
+        }
 
-    if (messages.length === 0) {
-      ratingStars.textContent = "☆☆☆☆☆";
-      ratingInfo.textContent = "0.0（0 則評價）";
-      return;
+        const total = messages.reduce((sum, msg) => sum + Number(msg.rating), 0);
+        const avg = (total / messages.length).toFixed(1);
+        const fullStars = Math.round(avg);
+
+        ratingStars.textContent = "★".repeat(fullStars) + "☆".repeat(5 - fullStars);
+        ratingInfo.textContent = `${avg}（${messages.length} 則評價）`;
     }
-
-    const total = messages.reduce((sum, msg) => sum + Number(msg.rating), 0);
-    const avg = (total / messages.length).toFixed(1);
-    const fullStars = Math.round(avg);
-
-    ratingStars.textContent = "★".repeat(fullStars) + "☆".repeat(5 - fullStars);
-    ratingInfo.textContent = `${avg}（${messages.length} 則評價）`;
-  }
 
   // =================== 頁面初始化 ===================
   renderMessages();
