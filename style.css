@@ -58,7 +58,6 @@ footer{
 /* =========================================================
    INDEX.html - Navbar
    ========================================================= */
-
 /* ===== Navbar (with actions) ===== */
 .site-header{
   position: sticky;
@@ -80,25 +79,31 @@ footer{
 }
 
 .logo{
-  font-size: 22px;
-  letter-spacing: .3px;
-  font-weight: 700;
-
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: .8px;
+  font-size: 23px;
+  font-weight: 900;
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
   color: inherit;
-  font-weight: 700;
 }
 
 .logo::after{
   content: "";
-  display: inline-block;
-  width: 10px;
-  height: 10px;
+  width: 14px;
+  height: 3px;
   margin-left: 10px;
   border-radius: 99px;
-  background: var(--accent-2);
-  opacity: .9;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transform: translateY(1px);
 }
+
+.logo:hover::after{
+  width: 20px;
+  transition: width .2s ease;
+}
+
 
 .nav-links{
   display: flex;
