@@ -24,6 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
             zoomImg.src = thumb.src;
         });
     });
+    // 商品 ID（可用於購物車或其他用途）
+    const productId = document.querySelector(".product-title")?.textContent.trim() || "goods-unknown";
 
     // =================== 規格切換 ===================
     specSelect.addEventListener("change", () => {
@@ -172,9 +174,19 @@ document.addEventListener("DOMContentLoaded", () => {
             time: new Date().toLocaleString()
         };
 
-        const messages = JSON.parse(localStorage.getItem("messages")) || [];
+        // 取得商品 ID
+        const productId = document.querySelector(".product-title")?.textContent.trim() || "goods-unknown";
+
+        // 從 localStorage 取出該商品留言
+        const messages = JSON.parse(localStorage.getItem(`messages-${productId}`)) || [];
+
+        // 新增留言到最前面
         messages.unshift(newMessage);
-        localStorage.setItem("messages", JSON.stringify(messages));
+
+        // 存回 localStorage
+        localStorage.setItem(`messages-${productId}`, JSON.stringify(messages));
+        
+        // 重新顯示留言和更新評分
 
         renderMessages();
         updateRatingSummary();
@@ -189,7 +201,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // =================== 顯示留言 ===================
     function renderMessages() {
-        const messages = JSON.parse(localStorage.getItem("messages")) || [];
+        const productId = document.querySelector(".product-title")?.textContent.trim() || "goods-unknown";
+        const messages = JSON.parse(localStorage.getItem(`messages-${productId}`)) || [];
         messageList.innerHTML = "";
 
         messages.forEach(msg => {
@@ -209,9 +222,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+
     // =================== 更新平均星級 ===================
     function updateRatingSummary() {
-        const messages = JSON.parse(localStorage.getItem("messages")) || [];
+        const productId = document.querySelector(".product-title")?.textContent.trim() || "goods-unknown";
+        const messages = JSON.parse(localStorage.getItem(`messages-${productId}`)) || [];
         const ratingStars = document.getElementById("ratingStars");
         const ratingInfo = document.getElementById("ratingInfo");
 
@@ -228,6 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ratingStars.textContent = "★".repeat(fullStars) + "☆".repeat(5 - fullStars);
         ratingInfo.textContent = `${avg}（${messages.length} 則評價）`;
     }
+
 
     // =================== 頁面初始化 ===================
     renderMessages();

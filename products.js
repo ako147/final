@@ -53,13 +53,16 @@ const sortBtn = document.getElementById("sortBtn");
 const sortList = document.getElementById("sortList");
 const sortWrapper = document.querySelector(".sort-wrapper");
 
-// ===== 初始 =====
+// 隱藏進階篩選（如果存在）
+if (filterBox) filterBox.style.display = "none";
+
+// ===== 初始設定 =====
 let selectedFilters = { type: [], category: [], color: [], material: [], shape: [], price: [] };
 let currentProducts = [...products];
-filterBox.style.display = "none";
 
 // ===== 渲染商品 =====
 function renderProducts(list){
+    if (!grid) return;
     grid.innerHTML = "";
     if(list.length===0){
         grid.innerHTML = "<p>查無商品</p>";
@@ -72,13 +75,9 @@ function renderProducts(list){
                     <button class="favorite ${isFav ? "active" : ""}" data-id="${p.id}">
                         ${isFav ? "♥" : "♡"}
                     </button>
-                    
-
-
                     <div class="product-image">
                       <img src="${p.image}" alt="${p.name}">
                     </div>
-                    
                     <p class="title">${p.name}</p>
                     <p class="price">NT$${p.price}</p>
                     <div class="colors">
@@ -86,39 +85,43 @@ function renderProducts(list){
                     </div>
                   </article>
                 </a>
-                `;
+            `;
         });
     }
     initFavoriteButtons();
-    resultCount.textContent = list.length;
+    if (resultCount) resultCount.textContent = list.length;
 }
 
 // ===== 搜尋功能 =====
 function performSearch(){
+    if (!searchInput) return;
     const keyword = searchInput.value.trim().toLowerCase();
     const result = products.filter(p => p.name.toLowerCase().includes(keyword));
     currentProducts = result;
     renderProducts(result);
 }
-searchBtn.addEventListener("click", performSearch);
-searchInput.addEventListener("input", performSearch);
+if (searchBtn) searchBtn.addEventListener("click", performSearch);
+if (searchInput) searchInput.addEventListener("input", performSearch);
 
 // ===== 清除條件 =====
-clearBtn.addEventListener("click", ()=>{
-    searchInput.value = "";
+if (clearBtn) clearBtn.addEventListener("click", ()=>{
+    if (searchInput) searchInput.value = "";
     selectedFilters = { type: [], category: [], color: [], material: [], shape: [], price: [] };
     document.querySelectorAll(".option-btn").forEach(b=>b.classList.remove("active"));
     document.querySelectorAll(".main-btn").forEach(b=>b.classList.remove("active"));
-    document.querySelectorAll(".option-panel").forEach(p=>p.classList.remove("active")); // 新增
-    selectedTagsBox.innerHTML = "";
+    document.querySelectorAll(".option-panel").forEach(p=>p.classList.remove("active"));
+    if (selectedTagsBox) selectedTagsBox.innerHTML = "";
     currentProducts = [...products];
     renderProducts(products);
-    filterBox.classList.remove("show");
-    filterBox.style.display = "none";
+    if (filterBox) {
+        filterBox.classList.remove("show");
+        filterBox.style.display = "none";
+    }
 });
 
 // ===== 顯示/隱藏進階篩選 =====
-filterBtn.addEventListener("click", ()=>{
+if (filterBtn) filterBtn.addEventListener("click", ()=>{
+    if (!filterBox) return;
     filterBox.classList.toggle("show");
     filterBox.style.display = filterBox.classList.contains("show") ? "block" : "none";
 });
@@ -129,9 +132,10 @@ document.querySelectorAll(".main-btn").forEach(btn=>{
         document.querySelectorAll(".main-btn").forEach(b=>b.classList.remove("active"));
         btn.classList.add("active");
         document.querySelectorAll(".filter-group").forEach(g=>g.classList.remove("active"));
-        document.getElementById(btn.dataset.target).classList.add("active");
+        const targetGroup = document.getElementById(btn.dataset.target);
+        if (targetGroup) targetGroup.classList.add("active");
         selectedFilters.type = [btn.textContent.trim()];
-        renderTags();
+        if (selectedTagsBox) renderTags();
         applyFilters();
     });
 });
@@ -140,11 +144,10 @@ document.querySelectorAll(".main-btn").forEach(btn=>{
 document.querySelectorAll(".filter-btn").forEach(btn=>{
     btn.addEventListener("click", ()=>{
         const targetPanel = document.getElementById(btn.dataset.target);
-        // 關閉其他 panel
+        if (!targetPanel) return;
         document.querySelectorAll(".option-panel").forEach(p=>{
             if(p !== targetPanel) p.classList.remove("active");
         });
-        // 切換自己
         targetPanel.classList.toggle("active");
     });
 });
@@ -161,13 +164,14 @@ document.querySelectorAll(".option-btn").forEach(btn=>{
         } else {
             selectedFilters[type] = selectedFilters[type].filter(v=>v!==value);
         }
-        renderTags();
+        if (selectedTagsBox) renderTags();
         applyFilters();
     });
 });
 
 // ===== 渲染標籤 =====
 function renderTags(){
+    if (!selectedTagsBox) return;
     selectedTagsBox.innerHTML = "";
     Object.entries(selectedFilters).forEach(([type, values])=>{
         values.forEach(val=>{
