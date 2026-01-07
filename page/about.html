@@ -4,25 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
   <title>商店資訊｜VisionHub</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <link rel="stylesheet" href="../asset/style.css" />
 </head>
 
 <body>
   <header class="site-header">
     <div class="nav-inner">
-      <a href="index.html" class="logo">VisionHub</a>
+      <a href="../index.html" class="logo">VisionHub</a>
 
       <nav class="nav-links">
-            <a href="index.html">首頁</a>
-            <a href="products.html">商品總覽</a>
-            <a href="team.html">組員介紹</a>
-            <a href="about.html">聯絡我們</a>
-        </nav>
+        <a href="../index.html">首頁</a>
+        <a href="products.html">商品總覽</a>
+        <a href="team.html">組員介紹</a>
+        <a href="about.html">聯絡我們</a>
+      </nav>
 
       <div class="nav-actions" id="authButtons">
-        <a class="btn-link" href="./login.html">登入</a>
-        <a class="btn-primary" href="../register.html">註冊</a>
+        <a class="btn-link" href="login.html">登入</a>
+        <a class="btn-primary" href="register.html">註冊</a>
       </div>
 
       <div class="user-menu" id="userMenu" style="display:none;">
@@ -32,7 +34,7 @@
         </div>
         <div class="dropdown" id="dropdown">
           <a href="account.html">我的帳戶</a>
-          <a href="cart.html">購物車 <span class="cart-badge" id="cartCount">0</span></a><hr>
+          <a href="cart.html">購物車 <span class="cart-badge" id="cartCount">0</span></a>
           <hr>
           <button onclick="logout()">登出</button>
         </div>
@@ -45,11 +47,11 @@
     <p style="color:var(--muted); margin-bottom:18px;">
       歡迎透過以下資訊與我們聯繫，或直接前往門市體驗試戴。
     </p>
+
     <section style="background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:0 8px 20px rgba(0,0,0,.05); padding:18px 16px; margin-bottom:16px;">
-    <h3 style="font-size:18px; margin-bottom:10px;">聯絡資訊</h3>
+      <h3 style="font-size:18px; margin-bottom:10px;">聯絡資訊</h3>
 
-    <div style="display:grid; grid-template-columns: 160px 1fr; gap:10px; align-items:start;">
-
+      <div style="display:grid; grid-template-columns: 160px 1fr; gap:10px; align-items:start;">
         <div style="color:var(--muted);">地址</div>
         <div>320314 桃園市中壢區中北路200號</div>
 
@@ -58,8 +60,7 @@
 
         <div style="color:var(--muted);">傳真</div>
         <div>886-3-265-5499</div>
-
-    </div>
+      </div>
     </section>
 
     <!-- 地圖卡 -->
