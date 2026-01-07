@@ -116,3 +116,9 @@
     font-size: 1.15rem;
   }
 }
+
+/* policy page bold color refine */
+.policy-page strong{
+  color: #222; 
+  font-weight: 700; 
+}

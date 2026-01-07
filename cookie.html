@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title>Cookie 政策｜VisionHub</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="privacy.css" />
+</head>
+
+<body>
+<!-- Header -->
+<header class="site-header">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">VisionHub</a>
+
+    <nav class="nav-links">
+      <a href="index.html">首頁</a>
+      <a href="products.html">商品總覽</a>
+      <a href="team.html">組員介紹</a>
+      <a href="about.html">聯絡我們</a>
+    </nav>
+
+    <div class="nav-actions" id="authButtons">
+      <a class="btn-link" href="login.html">登入</a>
+      <a class="btn-primary" href="register.html">註冊</a>
+    </div>
+
+    <div class="user-menu" id="userMenu" style="display:none;">
+      <div class="user-info" onclick="toggleDropdown()">
+        <div class="user-avatar" id="userAvatar">U</div>
+        <span class="user-name" id="userName">使用者</span>
+      </div>
+      <div class="dropdown" id="dropdown">
+        <a href="account.html">我的帳戶</a>
+        <a href="cart.html">購物車</a>
+        <hr>
+        <button onclick="logout()">登出</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Main -->
+<main class="page">
+  <section class="policy-page">
+    <h1>Cookie 政策</h1>
+
+    <p>
+      本網站 VisionHub（以下簡稱「本網站」）為提供更良好的使用體驗與服務品質，
+      會於您瀏覽網站時使用 Cookie 與類似技術。請您於使用本網站前，詳細閱讀以下 Cookie 政策內容。
+    </p>
+
+    <h2>一、什麼是 Cookie</h2>
+    <p>
+      Cookie 是一種儲存在使用者裝置中的小型文字檔案，
+      用來記錄使用者的瀏覽行為與偏好設定。
+      Cookie 本身不包含可識別個人身分的資訊。
+    </p>
+
+    <h2>二、Cookie 的使用目的</h2>
+    <p>本網站可能基於以下目的使用 Cookie：</p>
+    <ul>
+      <li>確保網站基本功能正常運作（如登入狀態、頁面導覽）。</li>
+      <li>記錄使用者偏好設定，以提升瀏覽體驗。</li>
+      <li>分析網站使用狀況，作為內容與功能改善之參考。</li>
+    </ul>
+
+    <h2>三、Cookie 類型</h2>
+    <p>本網站可能使用以下類型的 Cookie：</p>
+    <ul>
+      <li><strong>必要性 Cookie：</strong>維持網站正常運作所必須使用，無法停用。</li>
+      <li><strong>功能性 Cookie：</strong>記錄使用者設定與偏好，提升使用便利性。</li>
+      <li><strong>分析性 Cookie：</strong>用於統計與分析使用者行為（僅作整體分析使用）。</li>
+    </ul>
+
+    <h2>四、Cookie 的管理方式</h2>
+    <p>
+      您可透過瀏覽器設定自行管理或刪除 Cookie，
+      並可選擇拒絕部分或全部 Cookie 的使用。
+      若您停用 Cookie，可能導致本網站部分功能無法正常運作。
+    </p>
+
+    <h2>五、第三方 Cookie</h2>
+    <p>
+      本網站可能使用第三方服務所提供的 Cookie（如流量分析工具），
+      其 Cookie 之使用方式將依該第三方之政策為準。
+    </p>
+
+    <h2>六、Cookie 政策之更新</h2>
+    <p>
+      本網站保留隨時修改本 Cookie 政策之權利，
+      更新後之內容將公告於本頁面，恕不另行個別通知。
+    </p>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-content">
+    <div>© <span id="y"></span> VisionHub. All rights reserved.</div>
+    <div>
+      <a href="privacy.html">隱私權政策</a>
+      <a href="service.html">服務條款</a>
+    </div>
+  </div>
+</footer>
+
+<script src="index.js" defer></script>
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
+
