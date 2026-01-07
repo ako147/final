@@ -453,6 +453,60 @@ footer{
     margin-right: 8px;
     font-weight: 900;
   }
+  /* ===== Cookie Banner ===== */
+
+.cookie-banner{
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  max-width: 520px;
+  width: calc(100% - 32px);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(0,0,0,.12);
+  padding: 14px 16px;
+  display: none;
+  z-index: 999;
+}
+
+.cookie-banner p{
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.cookie-banner a{
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.cookie-banner a:hover{
+  text-decoration: underline;
+}
+
+.cookie-actions{
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* 簡單按鈕 */
+.cookie-actions .btn-outline{
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.cookie-actions .btn-outline:hover{
+  background: var(--bg);
+}
+
 /* =========================================================
    index.html - Hero Slider override 
    ========================================================= */
@@ -563,7 +617,6 @@ footer{
   border:none;
   box-shadow:0 8px 18px rgba(0,0,0,.18);
 
-  /* 關鍵：用 flex 強制字元置中 */
   display:flex;
   align-items:center;
   justify-content:center;
@@ -593,7 +646,7 @@ footer{
   left:auto !important;
 }
 
-/* dots: 放正中 + 底部背景透明(你說的 bottom) */
+/* dots*/
 .hero[aria-label="主視覺大廣告輪播"] .hero-dots{
   position:absolute !important;
   left:50% !important;
@@ -602,8 +655,8 @@ footer{
   transform:translateX(-50%) !important;
   display:flex;
   gap:10px;
-  padding:0;                     /* 透明：不要底條 */
-  background:transparent;        /* ← 你要透明 */
+  padding:0;                   
+  background:transparent;    
   border:none;
   box-shadow:none;
   z-index:3;
@@ -891,7 +944,7 @@ footer{
   }
 }
 
-/* ====== 購物車：移除 number input 右側上下調整箭頭（spinner） ====== */
+/* ====== 購物車 ====== */
 /* Chrome / Edge / Safari */
   .qty-input::-webkit-outer-spin-button,
   .qty-input::-webkit-inner-spin-button {

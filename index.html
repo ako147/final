@@ -116,7 +116,7 @@
         <img src="image/goods/1/1-1.jpg" alt="極簡金屬鏡框">
       </div>
       <h4>極簡金屬鏡框</h4>
-      <p>2026 潮流百搭厚邊框鈦輕盈系列</p>
+      <p>潮流百搭厚邊框鈦輕盈系列</p>
     </a>
 
     <a href="goods/good6.html" class="category product-card">
@@ -145,8 +145,6 @@
 
   </div>
 </section>
-
-
     <!-- ===== Footer ===== -->
     <footer>
         <div class="footer-content">
@@ -157,6 +155,18 @@
             </div>
         </div>
     </footer>
+    <!-- ===== Cookie Banner ===== -->
+    <div id="cookieBanner" class="cookie-banner">
+        <p>
+            本網站使用 Cookie 以提升使用體驗與分析網站使用情況。
+            詳細內容請參閱
+            <a href="#" target="_blank">Cookie 政策</a>。
+        </p>
+        <div class="cookie-actions">
+            <button id="cookieDecline" class="btn-outline">拒絕</button>
+            <button id="cookieAccept" class="btn-primary">同意</button>
+        </div>
+    </div>
 
     <script>
     // 檢查使用者登入狀態
@@ -293,7 +303,28 @@
     window.addEventListener('storage', function (e) {
         if (e.key === 'currentUser') checkLoginStatus();
     });
-    </script>
 
+    //cookie
+    const cookieBanner = document.getElementById('cookieBanner');
+    const acceptBtn = document.getElementById('cookieAccept');
+    const declineBtn = document.getElementById('cookieDecline');
+
+    // 檢查是否已選擇
+    const cookieChoice = localStorage.getItem('cookieConsent');
+
+    if (!cookieChoice) {
+        cookieBanner.style.display = 'block';
+    }
+
+    acceptBtn.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'accepted');
+        cookieBanner.style.display = 'none';
+    });
+
+    declineBtn.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'declined');
+        cookieBanner.style.display = 'none';
+    });
+    </script>
 </body>
 </html>
