@@ -46,12 +46,11 @@
         };
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
         alert('登入成功！歡迎回來，' + user.username + '！');
-        window.location.href = 'index.html';
 
-        
         const params = new URLSearchParams(location.search);
         const redirect = params.get("redirect");
-        window.location.href = redirect ? decodeURIComponent(redirect) : "index.html";
+        window.location.href = redirect ? decodeURIComponent(redirect) : "../index.html";
+
 
       } else {
         alert('帳號或密碼錯誤，請重試');
