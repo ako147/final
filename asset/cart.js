@@ -311,7 +311,7 @@
         if (!user) {
           if (confirm("你還沒登入，先去登入再結帳？")) {
             // 先把想回來的頁面帶著，之後你 login.js 支援 redirect 就能原路回來
-            const here = "cart.html";
+            const here = "../page/cart.html";
             window.location.href = `login.html?redirect=${encodeURIComponent(here)}`;
           }
           return;
