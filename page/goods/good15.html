@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>商品詳情｜VisionHub</title>
-    <link rel="stylesheet" href="goods.css">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../asset/goods.css">
+    <link rel="stylesheet" href="../asset/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <!-- ===== 共用 風格 ===== -->
@@ -25,8 +26,8 @@
 
             <!-- 登入/註冊按鈕（未登入時顯示） -->
             <div class="nav-actions" id="authButtons">
-                <a class="btn-link" href="../login.html">登入</a>
-                <a class="btn-primary" href="../register.html">註冊</a>
+                <a class="btn-link" href="login.html">登入</a>
+                <a class="btn-primary" href="register.html">註冊</a>
             </div>
 
             <!-- 使用者選單（登入後顯示） -->
@@ -35,11 +36,19 @@
                     <div class="user-avatar" id="userAvatar">U</div>
                     <span class="user-name" id="userName">使用者</span>
                 </div>
-                <div class="dropdown" id="dropdown">
-                    <a href="../account.html">我的帳戶</a>
-                    <a href="../cart.html">購物車 <span class="cart-badge" id="cartCount">0</span></a>
-                    <hr>
-                    <button onclick="logout()">登出</button>
+
+                <!-- 使用者選單（登入後顯示） -->
+                <div class="user-menu" id="userMenu" style="display: none;">
+                    <div class="user-info" onclick="toggleDropdown()">
+                        <div class="user-avatar" id="userAvatar">U</div>
+                        <span class="user-name" id="userName">使用者</span>
+                    </div>
+                    <div class="dropdown" id="dropdown">
+                        <a href="../account.html">我的帳戶</a>
+                        <a href="../cart.html">購物車 <span class="cart-badge" id="cartCount">0</span></a>
+                        <hr>
+                        <button onclick="logout()">登出</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -71,34 +80,34 @@
             <!-- 左側：圖片 -->
             <section class="product-gallery">
                 <div class="thumb-list" id="thumbList">
-                    <img src="../image/goods/1/1-1.jpg" data-spec="gold" alt="">
-                    <img src="../image/goods/1/1-2.jpg" data-spec="gold" alt="">
-                    <img src="../image/goods/1/1-3.jpg" data-spec="gold" alt="">
-                    <img src="../image/goods/1/1-4.jpg" data-spec="gold" alt="">
-                    <img src="../image/goods/1/1-5.jpg" data-spec="gold" alt="">
-                    <img src="../image/goods/1/1-6.jpg" data-spec="gold" alt="">
-                    
-                    <img src="../image/goods/1/2-1.jpg" data-spec="gray" alt="" style="display:none">
-                    <img src="../image/goods/1/2-2.jpg" data-spec="gray" alt="" style="display:none">
-                    <img src="../image/goods/1/good.jpg" data-spec="gray" alt="" style="display:none">
-                    <img src="../image/goods/1/good2.jpg" data-spec="gray" alt="" style="display:none">
+                    <img src="../image/goods/15/1-1.png" data-spec="green" alt="">
+                    <img src="../image/goods/15/1-2.png" data-spec="green" alt="">
+                    <img src="../image/goods/15/1-3.png" data-spec="green" alt="">
+                    <img src="../image/goods/15/1-4.png" data-spec="green" alt="">
+
+
+                    <img src="../image/goods/15/2-1.png" data-spec="gray" alt="" style="display:none">
+                    <img src="../image/goods/15/2-2.png" data-spec="gray" alt="" style="display:none">
+                    <img src="../image/goods/15/2-3.png" data-spec="gray" alt="" style="display:none">
+                    <img src="../image/goods/15/2-4.png" data-spec="gray" alt="" style="display:none">
+
                 </div>
                 <div class="main-image" id="mainImage">
-                    <img src="../image/goods/1/1-1.jpg" alt="商品主圖">
+                    <img src="../image/goods/15/1-1.png" alt="商品主圖">
                 </div>
                 <!-- 放大鏡預覽 -->
                 <div class="image-zoom-preview" id="zoomPreview">
-                    <img src="../image/goods/1/1-1.jpg" id="zoomImg">
+                    <img src="../image/goods/15/1-1.png" id="zoomImg">
                 </div>
             </section>
 
             <!-- 右側：商品資訊 -->
             <section class="product-info">
                 <h2 class="product-title">
-                    2026 潮流百搭厚邊框鈦輕盈系列
+                     ZOOTOPIA 眼鏡盒
                 </h2>
                 <div class="price-row">
-                    <div class="price">NT$3,980</div>
+                    <div class="price">NT$390</div>
                 </div>
                 <div class="rating" id="ratingSummary">
                     <span id="ratingStars">★★★★★</span>
@@ -110,8 +119,8 @@
                                 <label for="spec">規格</label>
                                 <div class="select-wrapper">
                                     <select id="spec">
-                                        <option value="gold" data-stock="1">金色 ‧ 195 ‧ Gold</option>
-                                        <option value="gray" data-stock="1">龜紋灰 ‧ 293 ‧ Gray</option>
+                                        <option value="green" data-stock="100">尼克 ‧ Green</option>
+                                        <option value="gray" data-stock="100">茱蒂 ‧ Gray</option>
                                     </select>
                                 </div>
                             </div>
@@ -119,7 +128,6 @@
                         <!-- 數量 -->
                         <div class="quantity-row">
                             <p class="option-title">數量</p>
-
                             <div class="qty-control">
                                 <button id="minus">-</button>
                                 <input type="number" id="qty" value="1" min="1">
@@ -132,7 +140,7 @@
                             <button class="btn-buy">立即購買</button>
                         </div>
 
-                    <p class="stock">現庫存剩下 1 件</p>
+                    <p class="stock">現庫存剩下 100 件</p>
 
             </section>
         </div>
@@ -146,9 +154,8 @@
             </div>
 
             <div class="tab-content active" id="info">
-                <p>
-                    本商品採用高品質鈦金屬鏡框，輕量耐用，適合長時間配戴，
-                    搭配潮流設計，日常與正式場合皆適用。
+                <p>              
+                    柔軟可愛、趣味與活力十足！探索首次聯名的 ZOOTOPIA 靈感來自深受喜愛的 ZOOTOPIA 角色。兼具時尚與實用性，讓這系列為你的每一天增添光采。
                 </p>
             </div>
 
@@ -156,35 +163,15 @@
                 <div class="spec-table">
                     <div class="spec-row">
                         <span class="spec-label">商品名稱</span>
-                        <span class="spec-value">2026 潮流百搭厚邊框鈦輕盈系列</span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-label">型號</span>
-                        <span class="spec-value">UTF-25A-261</span>
+                        <span class="spec-value">ZOOTOPIA 眼鏡盒</span>
                     </div>
                     <div class="spec-row">
                         <span class="spec-label">尺寸</span>
-                        <span class="spec-value">57□17-150 ○47</span>
+                        <span class="spec-value">16 x 7.5 x 5 cm</span>
                     </div>
                     <div class="spec-row">
-                        <span class="spec-label">販售店鋪</span>
-                        <span class="spec-value">全台部分門市與官方網站販售</span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-label">框型</span>
-                        <span class="spec-value">其他</span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-label">臉型</span>
-                        <span class="spec-value">鵝蛋形</span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-label">性別</span>
-                        <span class="spec-value">UNISEX</span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-label">更換鏡片</span>
-                        <span class="spec-value">fra001003010</span>
+                        <span class="spec-label">型號</span>
+                        <span class="spec-value">DN-CASE01-5A</span>
                     </div>
                 </div>
             </div>
@@ -233,9 +220,9 @@
         </div>
     </footer>
 
-    <script src="../cart.js" defer></script>
-    <script src="goods.js" defer></script>
-    <script src="../index.js" defer></script>
-    <script src="../products.js" defer></script>
+    <script src="../asset/cart.js" defer></script>
+    <script src="../asset/goods.js" defer></script>
+    <script src="../asset/index.js" defer></script>
+    <script src="../asset/products.js" defer></script>
 </body>
 </html>
