@@ -565,3 +565,85 @@
     font-size: 14px;
     color: #666;
 }
+
+@media (max-width: 768px) {
+
+  /* ===== 全站基礎 ===== */
+  body {
+    font-size: 14px;
+  }
+
+  /* ===== Navbar ===== */
+  .nav-inner {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .nav-actions {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ===== 搜尋列 ===== */
+  .search-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-bar input {
+    width: 100%;
+  }
+
+  .search-bar button {
+    width: 100%;
+  }
+
+  /* ===== 商品列表 ===== */
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 16px;
+    padding: 0 16px;
+  }
+
+  /* 超小手機再變 1 欄 */
+  @media (max-width: 480px) {
+    .product-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ===== 商品詳情頁 ===== */
+  .product-wrapper {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .product-page {
+    padding: 32px 16px 48px;
+  }
+
+  /* 主圖自適應 */
+  .main-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  /* 放大鏡：手機直接關閉 */
+  .image-zoom-preview {
+    display: none !important;
+  }
+
+  /* ===== Footer ===== */
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
