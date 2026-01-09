@@ -288,7 +288,7 @@ footer{
     background: rgba(255,255,255,.55);
     padding-top: 26px;
     padding-bottom: 26px;
-}
+} 
 
 .footer-content{
     max-width: var(--container);
