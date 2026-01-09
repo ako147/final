@@ -330,11 +330,19 @@ footer a:hover{
 .search-bar-wrapper {
     max-width: 800px;
     margin: 0 auto 40px; /* 置中 */
+    position: fixed;
     display: flex;
     flex-direction: column;
     gap: 16px;
     padding-top: 26px;
     padding-bottom: 26px;
+
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 800px;
+    z-index: 20;
 }
 
 /* 搜尋列 */
